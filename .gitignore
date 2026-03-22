@@ -1,0 +1,309 @@
+# ============================================
+# COMPREHENSIVE GITIGNORE FOR E-COMMERCE PROJECT
+# Backend: NestJS + Prisma
+# Frontend: Next.js
+# ML: Python + Scikit-learn
+# ============================================
+
+# ============================================
+# NODE.JS / NPM / YARN / PNPM
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store/
+.npm/
+.yarn/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ============================================
+# NEXT.JS (Frontend)
+# ============================================
+.next/
+out/
+build/
+.next/
+swc/
+.turbo/
+
+# ============================================
+# NESTJS (Backend)
+# ============================================
+dist/
+build/
+*.tsbuildinfo
+.nest/
+*.log
+backend-out.log
+hs_err_pid*.log
+
+# ============================================
+# PRISMA (Database ORM)
+# ============================================
+# Keep migrations, ignore generated client
+prisma/migrations/
+!prisma/migrations/.gitkeep
+prisma/*.db
+prisma/*.db-journal
+prisma/migrations/migration_lock.toml
+
+# ============================================
+# ENVIRONMENT FILES
+# ============================================
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ============================================
+# IDE & EDITOR FILES
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.history/
+.DS_Store
+Thumbs.db
+*.iml
+
+# ============================================
+# OPERATING SYSTEM FILES
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ============================================
+# PYTHON & ML (Machine Learning)
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+ENV/
+env/
+.venv
+*.pkl
+*.joblib
+*.h5
+*.pb
+*.onnx
+*.pt
+*.pth
+*.ckpt
+
+# ============================================
+# JUPYTER NOTEBOOK
+# ============================================
+.ipynb_checkpoints
+*.ipynb
+
+# ============================================
+# DATA FILES & SCRAPED DATA
+# ============================================
+# Keep structure, ignore large data files
+data/scraped/*.json
+!data/scraped/.gitkeep
+data/raw/
+data/processed/
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+
+# ============================================
+# DOCKER & CONTAINERIZATION
+# ============================================
+*.log
+docker-compose.override.yml
+.dockerignore
+Dockerfile.dev
+
+# ============================================
+# TESTING & COVERAGE
+# ============================================
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+.playwright-mcp
+*.lcov
+test-results/
+coverage/
+
+# ============================================
+# BUILD ARTIFACTS & CACHE
+# ============================================
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.cache/
+.temp/
+*.tsbuildinfo
+
+# ============================================
+# DEPLOYMENT & CI/CD
+# ============================================
+.vercel/
+.netlify/
+firebase-debug.log*
+firebase-debug.*.log
+.firebase/
+firebase.json
+.firebaserc
+.wrangler/
+.pulumi/
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# ============================================
+# LOG FILES
+# ============================================
+*.log
+logs/
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+backend-out.log
+hs_err_pid*.log
+
+# ============================================
+# MISC FILES
+# ============================================
+*.pid
+*.seed
+*.pid.lock
+.DS_Store
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+.npm
+.eslintcache
+.stylelintcache
+*.tgz
+*.tar.gz
+
+# ============================================
+# DATABASE FILES
+# ============================================
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.sql.gz
+dump.sql
+
+# ============================================
+# BACKUP FILES
+# ============================================
+*.bak
+*.backup
+*.old
+*.orig
+*~
+
+# ============================================
+# TEMPORARY FILES
+# =================================<arg_value>
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+
+# ============================================
+# MONOREPO SPECIFIC
+# ============================================
+node_modules/
+.pnp
+.pnp.*
+
+# ============================================
+# SPECIFIC TO THIS PROJECT
+# ============================================
+# Backend specific
+backend-nestjs-prisma/node_modules/
+backend-nestjs-prisma/dist/
+backend-nestjs-prisma/*.log
+backend-nestjs-prisma/.env
+
+# Frontend specific
+frontend-nestjs-prisma/node_modules/
+frontend-nestjs-prisma/.next/
+frontend-nestjs-prisma/out/
+frontend-nestjs-prisma/build/
+frontend-nestjs-prisma/.env
+
+# ML service specific
+ml-recommendation-service/node_modules/
+ml-recommendation-service/venv/
+ml-recommendation-service/__pycache__/
+ml-recommendation-service/ml/models/*.pkl
+ml-recommendation-service/ml/models/*.joblib
+ml-recommendation-service/ml/data/
+ml-recommendation-service/ml/logs/
+
+# Documentation and audit files (optional - uncomment to ignore)
+# controller-audit-report.md
+# controller-audit.json
+# doc.md
+
+# ============================================
+# END OF GITIGNORE
+# ============================================

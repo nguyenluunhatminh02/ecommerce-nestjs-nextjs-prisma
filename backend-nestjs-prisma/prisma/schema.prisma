@@ -1,0 +1,1291 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ===== USERS & AUTH =====
+
+model users {
+  id                             String                   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at                     DateTime                 @default(now()) @db.Timestamp(6)
+  updated_at                     DateTime                 @default(now()) @updatedAt @db.Timestamp(6)
+  email                          String                   @unique @db.VarChar
+  password                       String?                  @db.VarChar
+  first_name                     String                   @db.VarChar
+  last_name                      String                   @db.VarChar
+  phone                          String?                  @db.VarChar
+  avatar_url                     String?                  @db.VarChar
+  date_of_birth                  DateTime?                @db.Date
+  gender                         String?                  @db.VarChar(20)
+  provider                       users_provider_enum      @default(LOCAL)
+  provider_id                    String?                  @db.VarChar
+  email_verified                 Boolean                  @default(false)
+  email_verification_token       String?                  @db.VarChar
+  email_verification_expiry      DateTime?                @db.Timestamp(6)
+  password_reset_token           String?                  @db.VarChar
+  password_reset_expiry          DateTime?                @db.Timestamp(6)
+  two_factor_enabled             Boolean                  @default(false)
+  two_factor_secret              String?                  @db.VarChar
+  is_active                      Boolean                  @default(true)
+  is_locked                      Boolean                  @default(false)
+  failed_login_attempts          Int                      @default(0)
+  lock_time                      DateTime?                @db.Timestamp(6)
+  last_login_at                  DateTime?                @db.Timestamp(6)
+  last_login_ip                  String?                  @db.VarChar(50)
+  is_deleted                     Boolean                  @default(false)
+  deleted_at                     DateTime?                @db.Timestamp(6)
+  language                       String                   @default("en") @db.VarChar(10)
+  timezone                       String                   @default("UTC") @db.VarChar(50)
+  notification_email_enabled     Boolean                  @default(true)
+  notification_push_enabled      Boolean                  @default(true)
+  notification_in_app_enabled    Boolean                  @default(true)
+  notification_security_enabled  Boolean                  @default(true)
+  notification_order_enabled     Boolean                  @default(true)
+  notification_promotion_enabled Boolean                  @default(false)
+  profile_public                 Boolean                  @default(false)
+  show_email                     Boolean                  @default(false)
+  show_phone                     Boolean                  @default(false)
+  show_activity_status           Boolean                  @default(true)
+  delete_status                  users_delete_status_enum @default(ACTIVE)
+  delete_requested_at            DateTime?                @db.Timestamp(6)
+  fcm_token                      String?                  @db.VarChar(500)
+
+  device_fingerprints device_fingerprints[]
+  login_history       login_history[]
+  notifications       notifications[]
+  refresh_tokens      refresh_tokens[]
+  security_questions  security_questions[]
+  user_roles          user_roles[]
+  addresses           addresses[]
+  orders              orders[]
+  reviews             reviews[]
+  shop                shops?
+  cart                carts?
+  wishlists           wishlists[]
+  chat_rooms_buyer    chat_rooms[]      @relation("buyer")
+  chat_rooms_seller   chat_rooms[]      @relation("seller")
+  chat_messages       chat_messages[]
+  support_tickets     support_tickets[]
+  wallet              user_wallets?
+  loyalty_members     loyalty_members[]
+  subscriptions       subscriptions[]
+  affiliates          affiliates[]
+  return_requests     return_requests[]
+  blog_posts          blog_posts[]
+  blog_comments       blog_comments[]
+  review_replies      review_replies[]
+  recently_viewed     recently_viewed[]
+  price_alerts        price_alerts[]
+  product_questions   product_questions[]
+  ticket_messages     ticket_messages[]
+  shop_followers      shop_followers[]
+}
+
+model device_fingerprints {
+  id           String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  fingerprint  String    @db.VarChar(255)
+  device_name  String?   @db.VarChar(255)
+  browser      String?   @db.VarChar(100)
+  os           String?   @db.VarChar(100)
+  ip_address   String?   @db.VarChar(50)
+  is_trusted   Boolean   @default(false)
+  last_seen_at DateTime? @db.Timestamp(6)
+  created_at   DateTime  @default(now()) @db.Timestamp(6)
+  user_id      String?   @db.Uuid
+  users        users?    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([fingerprint])
+  @@index([user_id])
+}
+
+model login_history {
+  id             String                    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  action         login_history_action_enum
+  ip_address     String?                   @db.VarChar
+  user_agent     String?                   @db.VarChar(512)
+  device_info    String?                   @db.VarChar
+  success        Boolean?
+  failure_reason String?                   @db.VarChar
+  created_at     DateTime                  @default(now()) @db.Timestamp(6)
+  user_id        String?                   @db.Uuid
+  users          users?                    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model refresh_tokens {
+  id             String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  token          String    @unique @db.VarChar
+  is_revoked     Boolean   @default(false)
+  expires_at     DateTime  @db.Timestamp(6)
+  user_agent     String?   @db.VarChar(512)
+  ip_address     String?   @db.VarChar
+  device_info    String?   @db.VarChar
+  last_active_at DateTime? @db.Timestamp(6)
+  created_at     DateTime  @default(now()) @db.Timestamp(6)
+  user_id        String?   @db.Uuid
+  users          users?    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model roles {
+  id         String          @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name       roles_name_enum @unique
+  user_roles user_roles[]
+}
+
+model security_questions {
+  id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  question    String   @db.VarChar(500)
+  answer_hash String   @db.VarChar(255)
+  sort_order  Int      @default(0)
+  created_at  DateTime @default(now()) @db.Timestamp(6)
+  user_id     String?  @db.Uuid
+  users       users?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model user_roles {
+  users_id String @db.Uuid
+  roles_id String @db.Uuid
+  roles    roles  @relation(fields: [roles_id], references: [id], onDelete: Cascade)
+  users    users  @relation(fields: [users_id], references: [id], onDelete: Cascade)
+
+  @@id([users_id, roles_id])
+  @@index([roles_id])
+  @@index([users_id])
+}
+
+// ===== ADDRESSES =====
+
+model addresses {
+  id            String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id       String   @db.Uuid
+  full_name     String   @db.VarChar(100)
+  phone         String   @db.VarChar(20)
+  address_line1 String   @db.VarChar(255)
+  address_line2 String?  @db.VarChar(255)
+  city          String   @db.VarChar(100)
+  state         String?  @db.VarChar(100)
+  district      String?  @db.VarChar(100)
+  ward          String?  @db.VarChar(100)
+  postal_code   String?  @db.VarChar(20)
+  country       String   @default("Vietnam") @db.VarChar(100)
+  address_type  String   @default("HOME") @db.VarChar(20)
+  is_default    Boolean  @default(false)
+  deleted       Boolean  @default(false)
+  created_at    DateTime @default(now()) @db.Timestamp(6)
+  updated_at    DateTime @default(now()) @updatedAt @db.Timestamp(6)
+  users         users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+// ===== CATEGORIES =====
+
+model categories {
+  id          String       @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String       @db.VarChar(100)
+  slug        String       @unique @db.VarChar(150)
+  description String?      @db.Text
+  image_url   String?      @db.Text
+  icon        String?      @db.VarChar(100)
+  parent_id   String?      @db.Uuid
+  sort_order  Int          @default(0)
+  active      Boolean      @default(true)
+  featured    Boolean      @default(false)
+  deleted     Boolean      @default(false)
+  created_at  DateTime     @default(now()) @db.Timestamp(6)
+  updated_at  DateTime     @default(now()) @updatedAt @db.Timestamp(6)
+  parent      categories?  @relation("CategoryParent", fields: [parent_id], references: [id])
+  children    categories[] @relation("CategoryParent")
+  products    products[]
+
+  @@index([parent_id])
+  @@index([slug])
+}
+
+// ===== BRANDS =====
+
+model brands {
+  id          String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String     @db.VarChar(100)
+  slug        String     @unique @db.VarChar(150)
+  description String?    @db.Text
+  logo_url    String?    @db.Text
+  website     String?    @db.VarChar(255)
+  active      Boolean    @default(true)
+  deleted     Boolean    @default(false)
+  created_at  DateTime   @default(now()) @db.Timestamp(6)
+  updated_at  DateTime   @default(now()) @updatedAt @db.Timestamp(6)
+  products    products[]
+
+  @@index([slug])
+}
+
+// ===== SHOPS =====
+
+model shops {
+  id             String           @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name           String           @db.VarChar(100)
+  slug           String           @unique @db.VarChar(150)
+  description    String?          @db.Text
+  logo_url       String?          @db.Text
+  banner_url     String?          @db.Text
+  phone          String?          @db.VarChar(20)
+  email          String?          @db.VarChar(255)
+  address        String?          @db.VarChar(255)
+  user_id        String           @unique @db.Uuid
+  verified       Boolean          @default(false)
+  active         Boolean          @default(true)
+  rating         Float            @default(0)
+  total_products Int              @default(0)
+  total_sales    Int              @default(0)
+  follower_count Int              @default(0)
+  deleted        Boolean          @default(false)
+  created_at     DateTime         @default(now()) @db.Timestamp(6)
+  updated_at     DateTime         @default(now()) @updatedAt @db.Timestamp(6)
+  users          users            @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  products       products[]
+  shop_followers shop_followers[]
+  orders         orders[]
+  chat_rooms     chat_rooms[]
+
+  @@index([slug])
+  @@index([user_id])
+}
+
+model shop_followers {
+  id         String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id    String   @db.Uuid
+  shop_id    String   @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  users      users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  shops      shops    @relation(fields: [shop_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, shop_id])
+}
+
+// ===== PRODUCTS =====
+
+model products {
+  id                  String                    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name                String                    @db.VarChar(255)
+  slug                String                    @unique @db.VarChar(300)
+  description         String?                   @db.Text
+  short_description   String?                   @db.Text
+  price               Decimal                   @db.Decimal(12, 2)
+  compare_at_price    Decimal?                  @db.Decimal(12, 2)
+  cost_price          Decimal?                  @db.Decimal(12, 2)
+  sku                 String?                   @db.VarChar(50)
+  stock_quantity      Int                       @default(0)
+  low_stock_threshold Int                       @default(0)
+  track_quantity      Boolean                   @default(false)
+  allow_backorder     Boolean                   @default(true)
+  weight              Float?
+  weight_unit         String?                   @db.VarChar(20)
+  category_id         String?                   @db.Uuid
+  brand_id            String?                   @db.Uuid
+  shop_id             String                    @db.Uuid
+  status              String                    @default("ACTIVE") @db.VarChar(20)
+  featured            Boolean                   @default(false)
+  average_rating      Float                     @default(0)
+  review_count        Int                       @default(0)
+  sales_count         Int                       @default(0)
+  view_count          Int                       @default(0)
+  meta_title          String?                   @db.Text
+  meta_description    String?                   @db.Text
+  free_shipping       Boolean                   @default(false)
+  is_digital          Boolean                   @default(false)
+  deleted             Boolean                   @default(false)
+  created_at          DateTime                  @default(now()) @db.Timestamp(6)
+  updated_at          DateTime                  @default(now()) @updatedAt @db.Timestamp(6)
+  categories          categories?               @relation(fields: [category_id], references: [id])
+  brands              brands?                   @relation(fields: [brand_id], references: [id])
+  shops               shops                     @relation(fields: [shop_id], references: [id])
+  images              product_images[]
+  variants            product_variants[]
+  attribute_values    product_attribute_values[]
+  reviews             reviews[]
+  order_items         order_items[]
+  cart_items          cart_items[]
+  wishlists           wishlists[]
+  flash_sale_items    flash_sale_items[]
+  warehouse_stocks    warehouse_stocks[]
+  recently_viewed     recently_viewed[]
+  price_alerts        price_alerts[]
+  product_questions   product_questions[]
+  product_tags        product_tags[]
+  collection_products collection_products[]
+
+  @@index([category_id])
+  @@index([brand_id])
+  @@index([shop_id])
+  @@index([slug])
+  @@index([status])
+}
+
+model product_images {
+  id         String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  product_id String   @db.Uuid
+  image_url  String   @db.Text
+  alt_text   String?  @db.Text
+  sort_order Int      @default(0)
+  is_primary Boolean  @default(false)
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  products   products @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@index([product_id])
+}
+
+model product_variants {
+  id               String                  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  product_id       String                  @db.Uuid
+  name             String                  @db.VarChar(100)
+  sku              String?                 @db.VarChar(50)
+  price            Decimal                 @db.Decimal(12, 2)
+  compare_at_price Decimal?                @db.Decimal(12, 2)
+  stock_quantity   Int                     @default(0)
+  image_url        String?                 @db.Text
+  active           Boolean                 @default(true)
+  created_at       DateTime                @default(now()) @db.Timestamp(6)
+  updated_at       DateTime                @default(now()) @updatedAt @db.Timestamp(6)
+  products         products                @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  option_values    variant_option_values[]
+  cart_items       cart_items[]
+
+  @@index([product_id])
+}
+
+model variant_option_values {
+  id               String           @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  variant_id       String           @db.Uuid
+  option_name      String           @db.VarChar(100)
+  option_value     String           @db.VarChar(100)
+  product_variants product_variants @relation(fields: [variant_id], references: [id], onDelete: Cascade)
+
+  @@index([variant_id])
+}
+
+model product_attributes {
+  id         Int                        @id @default(autoincrement())
+  name       String                     @db.VarChar(100)
+  sort_order Int                        @default(0)
+  created_at DateTime                   @default(now()) @db.Timestamp(6)
+  values     product_attribute_values[]
+}
+
+model product_attribute_values {
+  id                 Int                @id @default(autoincrement())
+  product_id         String             @db.Uuid
+  attribute_id       Int
+  value              String             @db.VarChar(255)
+  products           products           @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  product_attributes product_attributes @relation(fields: [attribute_id], references: [id], onDelete: Cascade)
+
+  @@index([product_id])
+  @@index([attribute_id])
+}
+
+model tags {
+  id           String         @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name         String         @unique @db.VarChar(100)
+  slug         String         @unique @db.VarChar(150)
+  created_at   DateTime       @default(now()) @db.Timestamp(6)
+  product_tags product_tags[]
+}
+
+model product_tags {
+  product_id String   @db.Uuid
+  tag_id     String   @db.Uuid
+  products   products @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  tags       tags     @relation(fields: [tag_id], references: [id], onDelete: Cascade)
+
+  @@id([product_id, tag_id])
+}
+
+// ===== CART =====
+
+model carts {
+  id              String       @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id         String       @unique @db.Uuid
+  coupon_code     String?      @db.VarChar(50)
+  discount_amount Decimal      @default(0) @db.Decimal(12, 2)
+  created_at      DateTime     @default(now()) @db.Timestamp(6)
+  updated_at      DateTime     @default(now()) @updatedAt @db.Timestamp(6)
+  users           users        @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  items           cart_items[]
+}
+
+model cart_items {
+  id               String            @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  cart_id          String            @db.Uuid
+  product_id       String            @db.Uuid
+  variant_id       String?           @db.Uuid
+  quantity         Int               @default(1)
+  price            Decimal           @db.Decimal(12, 2)
+  created_at       DateTime          @default(now()) @db.Timestamp(6)
+  updated_at       DateTime          @default(now()) @updatedAt @db.Timestamp(6)
+  carts            carts             @relation(fields: [cart_id], references: [id], onDelete: Cascade)
+  products         products          @relation(fields: [product_id], references: [id])
+  product_variants product_variants? @relation(fields: [variant_id], references: [id])
+
+  @@index([cart_id])
+  @@index([product_id])
+}
+
+// ===== ORDERS =====
+
+model orders {
+  id                     String                 @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  order_number           String                 @unique @db.VarChar(50)
+  user_id                String                 @db.Uuid
+  shop_id                String?                @db.Uuid
+  status                 String                 @default("PENDING") @db.VarChar(20)
+  subtotal               Decimal                @db.Decimal(12, 2)
+  shipping_fee           Decimal                @default(0) @db.Decimal(12, 2)
+  tax                    Decimal                @default(0) @db.Decimal(12, 2)
+  discount               Decimal                @default(0) @db.Decimal(12, 2)
+  total_amount           Decimal                @db.Decimal(12, 2)
+  payment_method         String                 @default("COD") @db.VarChar(20)
+  payment_status         String                 @default("PENDING") @db.VarChar(20)
+  note                   String?                @db.Text
+  coupon_code            String?                @db.VarChar(50)
+  shipping_full_name     String?                @db.VarChar(100)
+  shipping_phone         String?                @db.VarChar(20)
+  shipping_address_line1 String?                @db.VarChar(255)
+  shipping_address_line2 String?                @db.VarChar(255)
+  shipping_city          String?                @db.VarChar(100)
+  shipping_state         String?                @db.VarChar(100)
+  shipping_postal_code   String?                @db.VarChar(20)
+  shipping_country       String?                @db.VarChar(100)
+  cancel_reason          String?                @db.Text
+  deleted                Boolean                @default(false)
+  created_at             DateTime               @default(now()) @db.Timestamp(6)
+  updated_at             DateTime               @default(now()) @updatedAt @db.Timestamp(6)
+  users                  users                  @relation(fields: [user_id], references: [id])
+  shops                  shops?                 @relation(fields: [shop_id], references: [id])
+  items                  order_items[]
+  status_history         order_status_history[]
+  payments               payments[]
+  shipments              shipments[]
+  return_requests        return_requests[]
+
+  @@index([user_id])
+  @@index([shop_id])
+  @@index([order_number])
+  @@index([status])
+}
+
+model order_items {
+  id            String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  order_id      String   @db.Uuid
+  product_id    String   @db.Uuid
+  product_name  String   @db.VarChar(255)
+  product_image String?  @db.Text
+  variant_name  String?  @db.VarChar(100)
+  quantity      Int      @default(1)
+  price         Decimal  @db.Decimal(12, 2)
+  subtotal      Decimal  @db.Decimal(12, 2)
+  created_at    DateTime @default(now()) @db.Timestamp(6)
+  orders        orders   @relation(fields: [order_id], references: [id], onDelete: Cascade)
+  products      products @relation(fields: [product_id], references: [id])
+
+  @@index([order_id])
+  @@index([product_id])
+}
+
+model order_status_history {
+  id         String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  order_id   String   @db.Uuid
+  status     String   @db.VarChar(20)
+  note       String?  @db.Text
+  changed_by String?  @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  orders     orders   @relation(fields: [order_id], references: [id], onDelete: Cascade)
+
+  @@index([order_id])
+}
+
+// ===== REVIEWS =====
+
+model reviews {
+  id            String           @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id       String           @db.Uuid
+  product_id    String           @db.Uuid
+  rating        Int
+  comment       String?          @db.Text
+  approved      Boolean          @default(false)
+  helpful_count Int              @default(0)
+  deleted       Boolean          @default(false)
+  created_at    DateTime         @default(now()) @db.Timestamp(6)
+  updated_at    DateTime         @default(now()) @updatedAt @db.Timestamp(6)
+  users         users            @relation(fields: [user_id], references: [id])
+  products      products         @relation(fields: [product_id], references: [id])
+  replies       review_replies[]
+
+  @@index([user_id])
+  @@index([product_id])
+}
+
+model review_replies {
+  id         String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  review_id  String   @db.Uuid
+  user_id    String   @db.Uuid
+  reply      String   @db.Text
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  reviews    reviews  @relation(fields: [review_id], references: [id], onDelete: Cascade)
+  users      users    @relation(fields: [user_id], references: [id])
+
+  @@index([review_id])
+}
+
+// ===== PAYMENTS =====
+
+model payments {
+  id                       String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  order_id                 String   @db.Uuid
+  user_id                  String   @db.Uuid
+  amount                   Decimal  @db.Decimal(12, 2)
+  method                   String   @db.VarChar(30)
+  status                   String   @default("PENDING") @db.VarChar(20)
+  transaction_id           String?  @db.VarChar(255)
+  stripe_payment_intent_id String?  @db.VarChar(255)
+  failure_reason           String?  @db.Text
+  created_at               DateTime @default(now()) @db.Timestamp(6)
+  updated_at               DateTime @default(now()) @updatedAt @db.Timestamp(6)
+  orders                   orders   @relation(fields: [order_id], references: [id])
+
+  @@index([order_id])
+}
+
+// ===== NOTIFICATIONS =====
+
+model notifications {
+  id         String                     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  title      String                     @db.VarChar(255)
+  message    String                     @db.VarChar(2000)
+  type       notifications_type_enum
+  channel    notifications_channel_enum
+  is_read    Boolean                    @default(false)
+  read_at    DateTime?                  @db.Timestamp(6)
+  data       String?                    @db.VarChar(2000)
+  created_at DateTime                   @default(now()) @db.Timestamp(6)
+  user_id    String?                    @db.Uuid
+  users      users?                     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([created_at])
+  @@index([is_read])
+  @@index([user_id])
+}
+
+// ===== WISHLISTS =====
+
+model wishlists {
+  id         String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  user_id    String   @db.Uuid
+  product_id String   @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  users      users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  products   products @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, product_id])
+}
+
+// ===== CHAT =====
+
+model chat_rooms {
+  id              String          @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  buyer_id        String          @db.Uuid
+  seller_id       String          @db.Uuid
+  shop_id         String          @db.Uuid
+  active          Boolean         @default(true)
+  last_message    String?         @db.Text
+  last_message_at DateTime?       @db.Timestamp(6)
+  created_at      DateTime        @default(now()) @db.Timestamp(6)
+  updated_at      DateTime        @default(now()) @updatedAt @db.Timestamp(6)
+  buyer           users           @relation("buyer", fields: [buyer_id], references: [id])
+  seller          users           @relation("seller", fields: [seller_id], references: [id])
+  shops           shops           @relation(fields: [shop_id], references: [id])
+  messages        chat_messages[]
+
+  @@index([buyer_id])
+  @@index([seller_id])
+}
+
+model chat_messages {
+  id           String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  chat_room_id String     @db.Uuid
+  sender_id    String     @db.Uuid
+  content      String     @db.Text
+  image_url    String?    @db.Text
+  is_read      Boolean    @default(false)
+  deleted      Boolean    @default(false)
+  created_at   DateTime   @default(now()) @db.Timestamp(6)
+  chat_rooms   chat_rooms @relation(fields: [chat_room_id], references: [id], onDelete: Cascade)
+  users        users      @relation(fields: [sender_id], references: [id])
+
+  @@index([chat_room_id])
+}
+
+// ===== COUPONS =====
+
+model coupons {
+  id                   Int      @id @default(autoincrement())
+  code                 String   @unique @db.VarChar(50)
+  description          String?  @db.Text
+  discount_type        String   @default("PERCENTAGE") @db.VarChar(30)
+  discount_value       Decimal  @db.Decimal(12, 2)
+  minimum_order_amount Decimal? @db.Decimal(12, 2)
+  maximum_discount     Decimal? @db.Decimal(12, 2)
+  usage_limit          Int?
+  usage_count          Int      @default(0)
+  usage_limit_per_user Int?
+  start_date           DateTime @db.Timestamp(6)
+  end_date             DateTime @db.Timestamp(6)
+  active               Boolean  @default(true)
+  deleted              Boolean  @default(false)
+  created_at           DateTime @default(now()) @db.Timestamp(6)
+  updated_at           DateTime @default(now()) @updatedAt @db.Timestamp(6)
+}
+
+// ===== BANNERS =====
+
+model banners {
+  id               Int       @id @default(autoincrement())
+  title            String    @db.VarChar(255)
+  subtitle         String?   @db.Text
+  image_url        String    @db.Text
+  mobile_image_url String?   @db.Text
+  link             String?   @db.Text
+  button_text      String?   @db.VarChar(100)
+  button_link      String?   @db.Text
+  background_color String?   @db.VarChar(20)
+  text_color       String?   @db.VarChar(20)
+  position         String    @default("HOME_HERO") @db.VarChar(30)
+  sort_order       Int       @default(0)
+  active           Boolean   @default(true)
+  start_date       DateTime? @db.Timestamp(6)
+  end_date         DateTime? @db.Timestamp(6)
+  deleted          Boolean   @default(false)
+  created_at       DateTime  @default(now()) @db.Timestamp(6)
+  updated_at       DateTime  @default(now()) @updatedAt @db.Timestamp(6)
+}
+
+// ===== COLLECTIONS =====
+
+model collections {
+  id                  Int                   @id @default(autoincrement())
+  name                String                @db.VarChar(255)
+  slug                String                @unique @db.VarChar(300)
+  description         String?               @db.Text
+  image_url           String?               @db.Text
+  type                String?               @db.VarChar(50)
+  active              Boolean               @default(true)
+  featured            Boolean               @default(false)
+  sort_order          Int                   @default(0)
+  created_at          DateTime              @default(now()) @db.Timestamp(6)
+  updated_at          DateTime              @default(now()) @updatedAt @db.Timestamp(6)
+  collection_products collection_products[]
+}
+
+model collection_products {
+  collection_id Int
+  product_id    String      @db.Uuid
+  collections   collections @relation(fields: [collection_id], references: [id], onDelete: Cascade)
+  products      products    @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@id([collection_id, product_id])
+}
+
+// ===== SHIPPING =====
+
+model shipping_methods {
+  id                      Int      @id @default(autoincrement())
+  name                    String   @db.VarChar(100)
+  description             String?  @db.Text
+  base_cost               Decimal  @default(0) @db.Decimal(10, 2)
+  free_shipping_threshold Decimal? @db.Decimal(10, 2)
+  estimated_days          String?  @db.VarChar(50)
+  active                  Boolean  @default(true)
+  created_at              DateTime @default(now()) @db.Timestamp(6)
+  updated_at              DateTime @default(now()) @updatedAt @db.Timestamp(6)
+}
+
+model tax_rules {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(100)
+  country    String?  @db.VarChar(100)
+  state      String?  @db.VarChar(100)
+  rate       Decimal  @db.Decimal(5, 2)
+  active     Boolean  @default(true)
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  updated_at DateTime @default(now()) @updatedAt @db.Timestamp(6)
+}
+
+// ===== SHIPMENTS =====
+
+model shipments {
+  id                 String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  order_id           String    @db.Uuid
+  tracking_number    String    @unique @db.VarChar(100)
+  carrier            String    @db.VarChar(100)
+  status             String    @default("PENDING") @db.VarChar(20)
+  shipped_at         DateTime? @db.Timestamp(6)
+  estimated_delivery DateTime? @db.Timestamp(6)
+  delivered_at       DateTime? @db.Timestamp(6)
+  note               String?   @db.Text
+  created_at         DateTime  @default(now()) @db.Timestamp(6)
+  updated_at         DateTime  @default(now()) @updatedAt @db.Timestamp(6)
+  orders             orders    @relation(fields: [order_id], references: [id])
+
+  @@index([order_id])
+}
+
+// ===== BLOG =====
+
+model blog_categories {
+  id          Int          @id @default(autoincrement())
+  name        String       @db.VarChar(100)
+  slug        String       @unique @db.VarChar(150)
+  description String?      @db.Text
+  sort_order  Int          @default(0)
+  created_at  DateTime     @default(now()) @db.Timestamp(6)
+  blog_posts  blog_posts[]
+}
+
+model blog_posts {
+  id               String           @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  title            String           @db.VarChar(255)
+  slug             String           @unique @db.VarChar(300)
+  excerpt          String?          @db.Text
+  content          String           @db.Text
+  featured_image   String?          @db.Text
+  category_id      Int?
+  author_id        String           @db.Uuid
+  published        Boolean          @default(false)
+  featured         Boolean          @default(false)
+  view_count       Int              @default(0)
+  meta_title       String?          @db.Text
+  meta_description String?          @db.Text
+  published_at     DateTime?        @db.Timestamp(6)
+  created_at       DateTime         @default(now()) @db.Timestamp(6)
+  updated_at       DateTime         @default(now()) @updatedAt @db.Timestamp(6)
+  blog_categories  blog_categories? @relation(fields: [category_id], references: [id])
+  users            users            @relation(fields: [author_id], references: [id])
+  comments         blog_comments[]
+
+  @@index([slug])
+  @@index([category_id])
+}
+
+model blog_comments {
+  id         Int        @id @default(autoincrement())
+  post_id    String     @db.Uuid
+  user_id    String     @db.Uuid
+  content    String     @db.Text
+  approved   Boolean    @default(false)
+  created_at DateTime   @default(now()) @db.Timestamp(6)
+  blog_posts blog_posts @relation(fields: [post_id], references: [id], onDelete: Cascade)
+  users      users      @relation(fields: [user_id], references: [id])
+
+  @@index([post_id])
+}
+
+// ===== CMS PAGES =====
+
+model cms_pages {
+  id                 Int      @id @default(autoincrement())
+  title              String   @db.VarChar(255)
+  slug               String   @unique @db.VarChar(300)
+  content            String   @db.Text
+  meta_title         String?  @db.Text
+  meta_description   String?  @db.Text
+  published          Boolean  @default(false)
+  show_in_navigation Boolean  @default(false)
+  show_in_footer     Boolean  @default(false)
+  sort_order         Int      @default(0)
+  created_at         DateTime @default(now()) @db.Timestamp(6)
+  updated_at         DateTime @default(now()) @updatedAt @db.Timestamp(6)
+}
+
+// ===== FAQ =====
+
+model faqs {
+  id                Int      @id @default(autoincrement())
+  question          String   @db.VarChar(255)
+  answer            String   @db.Text
+  category          String?  @db.VarChar(100)
+  sort_order        Int      @default(0)
+  active            Boolean  @default(true)
+  featured          Boolean  @default(false)
+  helpful_count     Int      @default(0)
+  not_helpful_count Int      @default(0)
+  created_at        DateTime @default(now()) @db.Timestamp(6)
+  updated_at        DateTime @default(now()) @updatedAt @db.Timestamp(6)
+}
+
+// ===== NEWSLETTER =====
+
+model newsletters {
+  id            Int      @id @default(autoincrement())
+  email         String   @unique @db.VarChar(255)
+  active        Boolean  @default(true)
+  subscribed_at DateTime @default(now()) @db.Timestamp(6)
+}
+
+// ===== SUPPORT TICKETS =====
+
+model support_tickets {
+  id            String            @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  ticket_number String            @unique @db.VarChar(50)
+  user_id       String            @db.Uuid
+  subject       String            @db.VarChar(255)
+  description   String            @db.Text
+  status        String            @default("OPEN") @db.VarChar(20)
+  priority      String            @default("MEDIUM") @db.VarChar(20)
+  category      String?           @db.VarChar(100)
+  assigned_to   String?           @db.Uuid
+  created_at    DateTime          @default(now()) @db.Timestamp(6)
+  updated_at    DateTime          @default(now()) @updatedAt @db.Timestamp(6)
+  users         users             @relation(fields: [user_id], references: [id])
+  messages      ticket_messages[]
+
+  @@index([user_id])
+  @@index([status])
+}
+
+model ticket_messages {
+  id              String          @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  ticket_id       String          @db.Uuid
+  user_id         String          @db.Uuid
+  message         String          @db.Text
+  is_staff        Boolean         @default(false)
+  created_at      DateTime        @default(now()) @db.Timestamp(6)
+  support_tickets support_tickets @relation(fields: [ticket_id], references: [id], onDelete: Cascade)
+  users           users           @relation(fields: [user_id], references: [id])
+
+  @@index([ticket_id])
+}
+
+// ===== FLASH SALES =====
+
+model flash_sales {
+  id           Int                @id @default(autoincrement())
+  name         String             @db.VarChar(255)
+  slug         String             @unique @db.VarChar(300)
+  description  String?            @db.Text
+  banner_image String?            @db.Text
+  start_time   DateTime           @db.Timestamp(6)
+  end_time     DateTime           @db.Timestamp(6)
+  active       Boolean            @default(true)
+  created_at   DateTime           @default(now()) @db.Timestamp(6)
+  updated_at   DateTime           @default(now()) @updatedAt @db.Timestamp(6)
+  items        flash_sale_items[]
+}
+
+model flash_sale_items {
+  id               Int         @id @default(autoincrement())
+  flash_sale_id    Int
+  product_id       String      @db.Uuid
+  sale_price       Decimal     @db.Decimal(12, 2)
+  quantity_limit   Int         @default(0)
+  quantity_sold    Int         @default(0)
+  discount_percent Int?
+  flash_sales      flash_sales @relation(fields: [flash_sale_id], references: [id], onDelete: Cascade)
+  products         products    @relation(fields: [product_id], references: [id])
+
+  @@index([flash_sale_id])
+}
+
+// ===== GIFT CARDS =====
+
+model gift_cards {
+  id              Int       @id @default(autoincrement())
+  code            String    @unique @db.VarChar(50)
+  initial_balance Decimal   @db.Decimal(12, 2)
+  current_balance Decimal   @db.Decimal(12, 2)
+  active          Boolean   @default(true)
+  expires_at      DateTime? @db.Timestamp(6)
+  purchased_by    String?   @db.Uuid
+  redeemed_by     String?   @db.Uuid
+  created_at      DateTime  @default(now()) @db.Timestamp(6)
+  updated_at      DateTime  @default(now()) @updatedAt @db.Timestamp(6)
+}
+
+// ===== PROMOTIONS =====
+
+model promotions {
+  id                   Int      @id @default(autoincrement())
+  name                 String   @db.VarChar(255)
+  description          String?  @db.Text
+  discount_type        String   @default("PERCENTAGE") @db.VarChar(30)
+  discount_value       Decimal  @db.Decimal(12, 2)
+  minimum_order_amount Decimal? @db.Decimal(12, 2)
+  maximum_discount     Decimal? @db.Decimal(12, 2)
+  start_date           DateTime @db.Timestamp(6)
+  end_date             DateTime @db.Timestamp(6)
+  active               Boolean  @default(true)
+  usage_limit          Int?
+  usage_count          Int      @default(0)
+  category_id          String?  @db.Uuid
+  product_id           String?  @db.Uuid
+  created_at           DateTime @default(now()) @db.Timestamp(6)
+  updated_at           DateTime @default(now()) @updatedAt @db.Timestamp(6)
+}
+
+// ===== LOYALTY =====
+
+model loyalty_programs {
+  id                 Int               @id @default(autoincrement())
+  name               String            @db.VarChar(100)
+  description        String?           @db.Text
+  points_per_dollar  Decimal           @default(1) @db.Decimal(10, 2)
+  point_value        Decimal           @default(0.01) @db.Decimal(10, 4)
+  minimum_redemption Int               @default(0)
+  active             Boolean           @default(true)
+  created_at         DateTime          @default(now()) @db.Timestamp(6)
+  updated_at         DateTime          @default(now()) @updatedAt @db.Timestamp(6)
+  members            loyalty_members[]
+}
+
+model loyalty_members {
+  id                    Int                    @id @default(autoincrement())
+  user_id               String                 @db.Uuid
+  program_id            Int
+  points_balance        Int                    @default(0)
+  total_points_earned   Int                    @default(0)
+  total_points_redeemed Int                    @default(0)
+  tier                  String?                @db.VarChar(50)
+  joined_at             DateTime               @default(now()) @db.Timestamp(6)
+  updated_at            DateTime               @default(now()) @updatedAt @db.Timestamp(6)
+  users                 users                  @relation(fields: [user_id], references: [id])
+  loyalty_programs      loyalty_programs        @relation(fields: [program_id], references: [id])
+  transactions          loyalty_transactions[]
+
+  @@index([user_id])
+}
+
+model loyalty_transactions {
+  id              Int             @id @default(autoincrement())
+  member_id       Int
+  points          Int
+  type            String          @db.VarChar(50)
+  description     String?         @db.Text
+  created_at      DateTime        @default(now()) @db.Timestamp(6)
+  loyalty_members loyalty_members @relation(fields: [member_id], references: [id])
+
+  @@index([member_id])
+}
+
+// ===== SUBSCRIPTIONS =====
+
+model subscription_plans {
+  id            Int             @id @default(autoincrement())
+  name          String          @db.VarChar(100)
+  description   String?         @db.Text
+  price         Decimal         @db.Decimal(10, 2)
+  billing_cycle String          @default("MONTHLY") @db.VarChar(20)
+  features      Json?
+  active        Boolean         @default(true)
+  created_at    DateTime        @default(now()) @db.Timestamp(6)
+  updated_at    DateTime        @default(now()) @updatedAt @db.Timestamp(6)
+  subscriptions subscriptions[]
+}
+
+model subscriptions {
+  id                 Int                @id @default(autoincrement())
+  user_id            String             @db.Uuid
+  plan_id            Int
+  status             String             @default("ACTIVE") @db.VarChar(20)
+  start_date         DateTime           @db.Timestamp(6)
+  end_date           DateTime?          @db.Timestamp(6)
+  next_billing_date  DateTime?          @db.Timestamp(6)
+  auto_renew         Boolean            @default(false)
+  created_at         DateTime           @default(now()) @db.Timestamp(6)
+  updated_at         DateTime           @default(now()) @updatedAt @db.Timestamp(6)
+  users              users              @relation(fields: [user_id], references: [id])
+  subscription_plans subscription_plans @relation(fields: [plan_id], references: [id])
+
+  @@index([user_id])
+}
+
+// ===== AFFILIATES =====
+
+model affiliate_programs {
+  id              Int          @id @default(autoincrement())
+  name            String       @db.VarChar(100)
+  description     String?      @db.Text
+  commission_rate Decimal      @default(10) @db.Decimal(5, 2)
+  minimum_payout  Decimal      @default(0) @db.Decimal(10, 2)
+  cookie_duration Int          @default(30)
+  active          Boolean      @default(true)
+  created_at      DateTime     @default(now()) @db.Timestamp(6)
+  updated_at      DateTime     @default(now()) @updatedAt @db.Timestamp(6)
+  affiliates      affiliates[]
+}
+
+model affiliates {
+  id                 Int                @id @default(autoincrement())
+  user_id            String             @db.Uuid
+  program_id         Int
+  referral_code      String             @unique @db.VarChar(50)
+  status             String             @default("PENDING") @db.VarChar(20)
+  total_earnings     Decimal            @default(0) @db.Decimal(12, 2)
+  pending_earnings   Decimal            @default(0) @db.Decimal(12, 2)
+  total_clicks       Int                @default(0)
+  total_conversions  Int                @default(0)
+  created_at         DateTime           @default(now()) @db.Timestamp(6)
+  updated_at         DateTime           @default(now()) @updatedAt @db.Timestamp(6)
+  users              users              @relation(fields: [user_id], references: [id])
+  affiliate_programs affiliate_programs @relation(fields: [program_id], references: [id])
+
+  @@index([user_id])
+}
+
+// ===== RETURNS =====
+
+model return_requests {
+  id            Int      @id @default(autoincrement())
+  return_number String   @unique @db.VarChar(50)
+  order_id      String   @db.Uuid
+  user_id       String   @db.Uuid
+  reason        String   @db.Text
+  status        String   @default("PENDING") @db.VarChar(20)
+  admin_note    String?  @db.Text
+  refund_amount Decimal? @db.Decimal(12, 2)
+  created_at    DateTime @default(now()) @db.Timestamp(6)
+  updated_at    DateTime @default(now()) @updatedAt @db.Timestamp(6)
+  orders        orders   @relation(fields: [order_id], references: [id])
+  users         users    @relation(fields: [user_id], references: [id])
+
+  @@index([order_id])
+  @@index([user_id])
+}
+
+// ===== WALLETS =====
+
+model user_wallets {
+  id           Int                   @id @default(autoincrement())
+  user_id      String                @unique @db.Uuid
+  balance      Decimal               @default(0) @db.Decimal(12, 2)
+  created_at   DateTime              @default(now()) @db.Timestamp(6)
+  updated_at   DateTime              @default(now()) @updatedAt @db.Timestamp(6)
+  users        users                 @relation(fields: [user_id], references: [id])
+  transactions wallet_transactions[]
+}
+
+model wallet_transactions {
+  id           Int          @id @default(autoincrement())
+  wallet_id    Int
+  amount       Decimal      @db.Decimal(12, 2)
+  type         String       @db.VarChar(20)
+  description  String?      @db.Text
+  reference_id String?      @db.VarChar(255)
+  created_at   DateTime     @default(now()) @db.Timestamp(6)
+  user_wallets user_wallets @relation(fields: [wallet_id], references: [id])
+
+  @@index([wallet_id])
+}
+
+// ===== WAREHOUSES =====
+
+model warehouses {
+  id         Int                @id @default(autoincrement())
+  name       String             @db.VarChar(100)
+  code       String?            @db.VarChar(50)
+  address    String?            @db.Text
+  city       String?            @db.VarChar(100)
+  state      String?            @db.VarChar(100)
+  country    String?            @db.VarChar(100)
+  phone      String?            @db.VarChar(20)
+  active     Boolean            @default(true)
+  is_primary Boolean            @default(false)
+  created_at DateTime           @default(now()) @db.Timestamp(6)
+  updated_at DateTime           @default(now()) @updatedAt @db.Timestamp(6)
+  stocks     warehouse_stocks[]
+}
+
+model warehouse_stocks {
+  id                Int        @id @default(autoincrement())
+  warehouse_id      Int
+  product_id        String     @db.Uuid
+  quantity          Int        @default(0)
+  reserved_quantity Int        @default(0)
+  reorder_point     Int        @default(10)
+  reorder_quantity  Int        @default(100)
+  updated_at        DateTime   @default(now()) @updatedAt @db.Timestamp(6)
+  warehouses        warehouses @relation(fields: [warehouse_id], references: [id])
+  products          products   @relation(fields: [product_id], references: [id])
+
+  @@index([warehouse_id])
+  @@index([product_id])
+}
+
+// ===== MEDIA =====
+
+model media_files {
+  id            Int      @id @default(autoincrement())
+  file_name     String   @db.VarChar(255)
+  original_name String   @db.VarChar(255)
+  url           String   @db.Text
+  content_type  String   @db.VarChar(100)
+  file_size     BigInt   @default(0)
+  folder        String?  @db.VarChar(255)
+  alt_text      String?  @db.VarChar(255)
+  created_at    DateTime @default(now()) @db.Timestamp(6)
+}
+
+// ===== RECENTLY VIEWED =====
+
+model recently_viewed {
+  id         Int      @id @default(autoincrement())
+  user_id    String   @db.Uuid
+  product_id String   @db.Uuid
+  viewed_at  DateTime @default(now()) @db.Timestamp(6)
+  users      users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  products   products @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+// ===== PRICE ALERTS =====
+
+model price_alerts {
+  id           Int      @id @default(autoincrement())
+  user_id      String   @db.Uuid
+  product_id   String   @db.Uuid
+  target_price Decimal  @db.Decimal(12, 2)
+  active       Boolean  @default(true)
+  created_at   DateTime @default(now()) @db.Timestamp(6)
+  users        users    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  products     products @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+// ===== PRODUCT QUESTIONS =====
+
+model product_questions {
+  id          Int      @id @default(autoincrement())
+  product_id  String   @db.Uuid
+  user_id     String   @db.Uuid
+  question    String   @db.Text
+  answer      String?  @db.Text
+  answered_by String?  @db.Uuid
+  status      String   @default("PENDING") @db.VarChar(20)
+  featured    Boolean  @default(false)
+  upvotes     Int      @default(0)
+  downvotes   Int      @default(0)
+  created_at  DateTime @default(now()) @db.Timestamp(6)
+  updated_at  DateTime @default(now()) @updatedAt @db.Timestamp(6)
+  products    products @relation(fields: [product_id], references: [id])
+  users       users    @relation(fields: [user_id], references: [id])
+
+  @@index([product_id])
+}
+
+// ===== AUDIT LOGS =====
+
+model audit_logs {
+  id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  action      String   @db.VarChar(100)
+  entity_type String   @db.VarChar(100)
+  entity_id   String?  @db.VarChar(255)
+  user_id     String?  @db.Uuid
+  user_email  String?  @db.VarChar(255)
+  details     String?  @db.Text
+  ip_address  String?  @db.VarChar(50)
+  created_at  DateTime @default(now()) @db.Timestamp(6)
+}
+
+// ===== ANALYTICS =====
+
+model analytics_events {
+  id           String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  event_type   String   @db.VarChar(50)
+  user_id      String?  @db.Uuid
+  session_id   String?  @db.VarChar(255)
+  product_id   String?  @db.Uuid
+  category_id  String?  @db.Uuid
+  search_query String?  @db.Text
+  page_url     String?  @db.Text
+  referrer     String?  @db.VarChar(500)
+  user_agent   String?  @db.VarChar(512)
+  ip_address   String?  @db.VarChar(50)
+  country      String?  @db.VarChar(100)
+  city         String?  @db.VarChar(100)
+  device       String?  @db.VarChar(50)
+  browser      String?  @db.VarChar(50)
+  value        Decimal? @db.Decimal(12, 2)
+  metadata     Json?
+  created_at   DateTime @default(now()) @db.Timestamp(6)
+}
+
+model daily_analytics {
+  id                  Int      @id @default(autoincrement())
+  date                DateTime @unique @db.Date
+  page_views          Int      @default(0)
+  unique_visitors     Int      @default(0)
+  product_views       Int      @default(0)
+  add_to_cart_count   Int      @default(0)
+  checkout_count      Int      @default(0)
+  order_count         Int      @default(0)
+  revenue             Decimal  @default(0) @db.Decimal(12, 2)
+  conversion_rate     Decimal  @default(0) @db.Decimal(5, 2)
+  new_customers       Int      @default(0)
+  returning_customers Int      @default(0)
+  created_at          DateTime @default(now()) @db.Timestamp(6)
+}
+
+// ===== ENUMS =====
+
+enum login_history_action_enum {
+  LOGIN_SUCCESS
+  LOGIN_FAILED
+  LOGOUT
+  LOGOUT_ALL
+  LOGOUT_SESSION
+  MFA_ENABLED
+  MFA_DISABLED
+  PASSWORD_CHANGED
+  ACCOUNT_LOCKED
+  ACCOUNT_DELETED
+}
+
+enum notifications_channel_enum {
+  EMAIL
+  PUSH
+  IN_APP
+  WEB_PUSH
+}
+
+enum notifications_type_enum {
+  SYSTEM
+  SECURITY
+  ACCOUNT
+  ORDER
+  PROMOTION
+  PUSH
+  EMAIL
+  IN_APP
+}
+
+enum roles_name_enum {
+  ADMIN
+  USER
+  MODERATOR
+  SELLER
+}
+
+enum users_delete_status_enum {
+  ACTIVE
+  DELETE_REQUESTED
+  GRACE_PERIOD
+  PERMANENTLY_DELETED
+}
+
+enum users_provider_enum {
+  LOCAL
+  GOOGLE
+  GITHUB
+}

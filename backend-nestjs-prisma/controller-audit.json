@@ -1,0 +1,3742 @@
+{
+  "generatedAt": "2026-03-16T08:11:00.484Z",
+  "controllerFileCount": 37,
+  "parsed": [
+    {
+      "file": "src/address/address.controller.ts",
+      "controllers": [
+        {
+          "line": 8,
+          "raw": "'addresses'",
+          "path": "addresses",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 12,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "AddressController",
+          "controllerBaseRaw": "'addresses'",
+          "controllerBase": "addresses",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/addresses"
+        },
+        {
+          "line": 17,
+          "method": "GET",
+          "handler": "getDefault",
+          "controllerClass": "AddressController",
+          "controllerBaseRaw": "'addresses'",
+          "controllerBase": "addresses",
+          "routeRaw": "'default'",
+          "routePath": "default",
+          "resolved": true,
+          "fullPath": "/addresses/default"
+        },
+        {
+          "line": 22,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "AddressController",
+          "controllerBaseRaw": "'addresses'",
+          "controllerBase": "addresses",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/addresses/:id"
+        },
+        {
+          "line": 27,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "AddressController",
+          "controllerBaseRaw": "'addresses'",
+          "controllerBase": "addresses",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/addresses"
+        },
+        {
+          "line": 32,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "AddressController",
+          "controllerBaseRaw": "'addresses'",
+          "controllerBase": "addresses",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/addresses/:id"
+        },
+        {
+          "line": 37,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "AddressController",
+          "controllerBaseRaw": "'addresses'",
+          "controllerBase": "addresses",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/addresses/:id"
+        },
+        {
+          "line": 42,
+          "method": "PATCH",
+          "handler": "setDefault",
+          "controllerClass": "AddressController",
+          "controllerBaseRaw": "'addresses'",
+          "controllerBase": "addresses",
+          "routeRaw": "':id/default'",
+          "routePath": ":id/default",
+          "resolved": true,
+          "fullPath": "/addresses/:id/default"
+        }
+      ]
+    },
+    {
+      "file": "src/admin/admin.controller.ts",
+      "controllers": [
+        {
+          "line": 4,
+          "raw": "'admin'",
+          "path": "admin",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 8,
+          "method": "GET",
+          "handler": "getUsers",
+          "controllerClass": "AdminController",
+          "controllerBaseRaw": "'admin'",
+          "controllerBase": "admin",
+          "routeRaw": "'users'",
+          "routePath": "users",
+          "resolved": true,
+          "fullPath": "/admin/users"
+        },
+        {
+          "line": 13,
+          "method": "PATCH",
+          "handler": "toggleActive",
+          "controllerClass": "AdminController",
+          "controllerBaseRaw": "'admin'",
+          "controllerBase": "admin",
+          "routeRaw": "'users/:id/toggle-active'",
+          "routePath": "users/:id/toggle-active",
+          "resolved": true,
+          "fullPath": "/admin/users/:id/toggle-active"
+        },
+        {
+          "line": 18,
+          "method": "PATCH",
+          "handler": "toggleUserStatus",
+          "controllerClass": "AdminController",
+          "controllerBaseRaw": "'admin'",
+          "controllerBase": "admin",
+          "routeRaw": "'users/:id/toggle-status'",
+          "routePath": "users/:id/toggle-status",
+          "resolved": true,
+          "fullPath": "/admin/users/:id/toggle-status"
+        },
+        {
+          "line": 23,
+          "method": "GET",
+          "handler": "getOrders",
+          "controllerClass": "AdminController",
+          "controllerBaseRaw": "'admin'",
+          "controllerBase": "admin",
+          "routeRaw": "'orders'",
+          "routePath": "orders",
+          "resolved": true,
+          "fullPath": "/admin/orders"
+        },
+        {
+          "line": 28,
+          "method": "PATCH",
+          "handler": "updateOrderStatus",
+          "controllerClass": "AdminController",
+          "controllerBaseRaw": "'admin'",
+          "controllerBase": "admin",
+          "routeRaw": "'orders/:id/status'",
+          "routePath": "orders/:id/status",
+          "resolved": true,
+          "fullPath": "/admin/orders/:id/status"
+        },
+        {
+          "line": 33,
+          "method": "GET",
+          "handler": "getReturns",
+          "controllerClass": "AdminController",
+          "controllerBaseRaw": "'admin'",
+          "controllerBase": "admin",
+          "routeRaw": "'returns'",
+          "routePath": "returns",
+          "resolved": true,
+          "fullPath": "/admin/returns"
+        },
+        {
+          "line": 38,
+          "method": "PATCH",
+          "handler": "handleReturn",
+          "controllerClass": "AdminController",
+          "controllerBaseRaw": "'admin'",
+          "controllerBase": "admin",
+          "routeRaw": "'returns/:id'",
+          "routePath": "returns/:id",
+          "resolved": true,
+          "fullPath": "/admin/returns/:id"
+        },
+        {
+          "line": 43,
+          "method": "GET",
+          "handler": "getTickets",
+          "controllerClass": "AdminController",
+          "controllerBaseRaw": "'admin'",
+          "controllerBase": "admin",
+          "routeRaw": "'tickets'",
+          "routePath": "tickets",
+          "resolved": true,
+          "fullPath": "/admin/tickets"
+        }
+      ]
+    },
+    {
+      "file": "src/affiliate/affiliate.controller.ts",
+      "controllers": [
+        {
+          "line": 6,
+          "raw": "'affiliates'",
+          "path": "affiliates",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 11,
+          "method": "GET",
+          "handler": "getPrograms",
+          "controllerClass": "AffiliateController",
+          "controllerBaseRaw": "'affiliates'",
+          "controllerBase": "affiliates",
+          "routeRaw": "'programs'",
+          "routePath": "programs",
+          "resolved": true,
+          "fullPath": "/affiliates/programs"
+        },
+        {
+          "line": 16,
+          "method": "GET",
+          "handler": "getMyAffiliate",
+          "controllerClass": "AffiliateController",
+          "controllerBaseRaw": "'affiliates'",
+          "controllerBase": "affiliates",
+          "routeRaw": "'my'",
+          "routePath": "my",
+          "resolved": true,
+          "fullPath": "/affiliates/my"
+        },
+        {
+          "line": 21,
+          "method": "POST",
+          "handler": "join",
+          "controllerClass": "AffiliateController",
+          "controllerBaseRaw": "'affiliates'",
+          "controllerBase": "affiliates",
+          "routeRaw": "'join'",
+          "routePath": "join",
+          "resolved": true,
+          "fullPath": "/affiliates/join"
+        },
+        {
+          "line": 26,
+          "method": "GET",
+          "handler": "getStats",
+          "controllerClass": "AffiliateController",
+          "controllerBaseRaw": "'affiliates'",
+          "controllerBase": "affiliates",
+          "routeRaw": "'stats'",
+          "routePath": "stats",
+          "resolved": true,
+          "fullPath": "/affiliates/stats"
+        },
+        {
+          "line": 31,
+          "method": "POST",
+          "handler": "createProgram",
+          "controllerClass": "AffiliateController",
+          "controllerBaseRaw": "'affiliates'",
+          "controllerBase": "affiliates",
+          "routeRaw": "'programs'",
+          "routePath": "programs",
+          "resolved": true,
+          "fullPath": "/affiliates/programs"
+        }
+      ]
+    },
+    {
+      "file": "src/analytics/analytics.controller.ts",
+      "controllers": [
+        {
+          "line": 22,
+          "raw": "'analytics'",
+          "path": "analytics",
+          "resolved": true
+        },
+        {
+          "line": 55,
+          "raw": "'admin/analytics'",
+          "path": "admin/analytics",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 27,
+          "method": "POST",
+          "handler": "trackEvent",
+          "controllerClass": "AnalyticsController",
+          "controllerBaseRaw": "'analytics'",
+          "controllerBase": "analytics",
+          "routeRaw": "'events'",
+          "routePath": "events",
+          "resolved": true,
+          "fullPath": "/analytics/events"
+        },
+        {
+          "line": 33,
+          "method": "GET",
+          "handler": "getDashboard",
+          "controllerClass": "AnalyticsController",
+          "controllerBaseRaw": "'analytics'",
+          "controllerBase": "analytics",
+          "routeRaw": "'dashboard'",
+          "routePath": "dashboard",
+          "resolved": true,
+          "fullPath": "/analytics/dashboard"
+        },
+        {
+          "line": 38,
+          "method": "GET",
+          "handler": "getOrderStats",
+          "controllerClass": "AnalyticsController",
+          "controllerBaseRaw": "'analytics'",
+          "controllerBase": "analytics",
+          "routeRaw": "'orders'",
+          "routePath": "orders",
+          "resolved": true,
+          "fullPath": "/analytics/orders"
+        },
+        {
+          "line": 43,
+          "method": "GET",
+          "handler": "getUserStats",
+          "controllerClass": "AnalyticsController",
+          "controllerBaseRaw": "'analytics'",
+          "controllerBase": "analytics",
+          "routeRaw": "'users'",
+          "routePath": "users",
+          "resolved": true,
+          "fullPath": "/analytics/users"
+        },
+        {
+          "line": 48,
+          "method": "GET",
+          "handler": "getAuditLogs",
+          "controllerClass": "AnalyticsController",
+          "controllerBaseRaw": "'analytics'",
+          "controllerBase": "analytics",
+          "routeRaw": "'audit-logs'",
+          "routePath": "audit-logs",
+          "resolved": true,
+          "fullPath": "/analytics/audit-logs"
+        },
+        {
+          "line": 59,
+          "method": "GET",
+          "handler": "getDashboard",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'dashboard'",
+          "routePath": "dashboard",
+          "resolved": true,
+          "fullPath": "/admin/analytics/dashboard"
+        },
+        {
+          "line": 71,
+          "method": "GET",
+          "handler": "getRevenue",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'revenue'",
+          "routePath": "revenue",
+          "resolved": true,
+          "fullPath": "/admin/analytics/revenue"
+        },
+        {
+          "line": 83,
+          "method": "GET",
+          "handler": "getSales",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'sales'",
+          "routePath": "sales",
+          "resolved": true,
+          "fullPath": "/admin/analytics/sales"
+        },
+        {
+          "line": 89,
+          "method": "GET",
+          "handler": "getProductsAnalytics",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'products'",
+          "routePath": "products",
+          "resolved": true,
+          "fullPath": "/admin/analytics/products"
+        },
+        {
+          "line": 95,
+          "method": "GET",
+          "handler": "getTopSelling",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'products/top-selling'",
+          "routePath": "products/top-selling",
+          "resolved": true,
+          "fullPath": "/admin/analytics/products/top-selling"
+        },
+        {
+          "line": 101,
+          "method": "GET",
+          "handler": "getTopViewed",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'products/top-viewed'",
+          "routePath": "products/top-viewed",
+          "resolved": true,
+          "fullPath": "/admin/analytics/products/top-viewed"
+        },
+        {
+          "line": 107,
+          "method": "GET",
+          "handler": "getCategoryAnalytics",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'categories'",
+          "routePath": "categories",
+          "resolved": true,
+          "fullPath": "/admin/analytics/categories"
+        },
+        {
+          "line": 112,
+          "method": "GET",
+          "handler": "getUsersAnalytics",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'users'",
+          "routePath": "users",
+          "resolved": true,
+          "fullPath": "/admin/analytics/users"
+        },
+        {
+          "line": 118,
+          "method": "GET",
+          "handler": "getConversionFunnel",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'conversion'",
+          "routePath": "conversion",
+          "resolved": true,
+          "fullPath": "/admin/analytics/conversion"
+        },
+        {
+          "line": 123,
+          "method": "GET",
+          "handler": "getOrderStatusBreakdown",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'orders/status'",
+          "routePath": "orders/status",
+          "resolved": true,
+          "fullPath": "/admin/analytics/orders/status"
+        },
+        {
+          "line": 128,
+          "method": "GET",
+          "handler": "getShopAnalytics",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'shops'",
+          "routePath": "shops",
+          "resolved": true,
+          "fullPath": "/admin/analytics/shops"
+        },
+        {
+          "line": 133,
+          "method": "GET",
+          "handler": "getSellerPerformance",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'shops/:shopId'",
+          "routePath": "shops/:shopId",
+          "resolved": true,
+          "fullPath": "/admin/analytics/shops/:shopId"
+        },
+        {
+          "line": 138,
+          "method": "GET",
+          "handler": "getInventoryAnalytics",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'inventory'",
+          "routePath": "inventory",
+          "resolved": true,
+          "fullPath": "/admin/analytics/inventory"
+        },
+        {
+          "line": 143,
+          "method": "GET",
+          "handler": "getReviewAnalytics",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'reviews'",
+          "routePath": "reviews",
+          "resolved": true,
+          "fullPath": "/admin/analytics/reviews"
+        },
+        {
+          "line": 148,
+          "method": "GET",
+          "handler": "getDailyAnalytics",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'daily'",
+          "routePath": "daily",
+          "resolved": true,
+          "fullPath": "/admin/analytics/daily"
+        },
+        {
+          "line": 153,
+          "method": "GET",
+          "handler": "getRealTimeStats",
+          "controllerClass": "AdminAnalyticsController",
+          "controllerBaseRaw": "'admin/analytics'",
+          "controllerBase": "admin/analytics",
+          "routeRaw": "'real-time'",
+          "routePath": "real-time",
+          "resolved": true,
+          "fullPath": "/admin/analytics/real-time"
+        }
+      ]
+    },
+    {
+      "file": "src/auth/auth.controller.ts",
+      "controllers": [
+        {
+          "line": 31,
+          "raw": "'auth'",
+          "path": "auth",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 41,
+          "method": "POST",
+          "handler": "register",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'register'",
+          "routePath": "register",
+          "resolved": true,
+          "fullPath": "/auth/register"
+        },
+        {
+          "line": 48,
+          "method": "GET",
+          "handler": "verifyEmail",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'verify-email'",
+          "routePath": "verify-email",
+          "resolved": true,
+          "fullPath": "/auth/verify-email"
+        },
+        {
+          "line": 55,
+          "method": "POST",
+          "handler": "resendVerification",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'resend-verification'",
+          "routePath": "resend-verification",
+          "resolved": true,
+          "fullPath": "/auth/resend-verification"
+        },
+        {
+          "line": 64,
+          "method": "POST",
+          "handler": "login",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'login'",
+          "routePath": "login",
+          "resolved": true,
+          "fullPath": "/auth/login"
+        },
+        {
+          "line": 72,
+          "method": "POST",
+          "handler": "mfaValidate",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'mfa/validate'",
+          "routePath": "mfa/validate",
+          "resolved": true,
+          "fullPath": "/auth/mfa/validate"
+        },
+        {
+          "line": 82,
+          "method": "POST",
+          "handler": "refresh",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'refresh-token'",
+          "routePath": "refresh-token",
+          "resolved": true,
+          "fullPath": "/auth/refresh-token"
+        },
+        {
+          "line": 91,
+          "method": "POST",
+          "handler": "logout",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'logout'",
+          "routePath": "logout",
+          "resolved": true,
+          "fullPath": "/auth/logout"
+        },
+        {
+          "line": 103,
+          "method": "POST",
+          "handler": "logoutAll",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'logout-all'",
+          "routePath": "logout-all",
+          "resolved": true,
+          "fullPath": "/auth/logout-all"
+        },
+        {
+          "line": 117,
+          "method": "POST",
+          "handler": "forgotPassword",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'forgot-password'",
+          "routePath": "forgot-password",
+          "resolved": true,
+          "fullPath": "/auth/forgot-password"
+        },
+        {
+          "line": 125,
+          "method": "POST",
+          "handler": "resetPassword",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'reset-password'",
+          "routePath": "reset-password",
+          "resolved": true,
+          "fullPath": "/auth/reset-password"
+        },
+        {
+          "line": 132,
+          "method": "POST",
+          "handler": "changePassword",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'change-password'",
+          "routePath": "change-password",
+          "resolved": true,
+          "fullPath": "/auth/change-password"
+        },
+        {
+          "line": 145,
+          "method": "POST",
+          "handler": "mfaSetup",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'mfa/setup'",
+          "routePath": "mfa/setup",
+          "resolved": true,
+          "fullPath": "/auth/mfa/setup"
+        },
+        {
+          "line": 152,
+          "method": "POST",
+          "handler": "mfaVerify",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'mfa/verify'",
+          "routePath": "mfa/verify",
+          "resolved": true,
+          "fullPath": "/auth/mfa/verify"
+        },
+        {
+          "line": 163,
+          "method": "POST",
+          "handler": "mfaDisable",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'mfa/disable'",
+          "routePath": "mfa/disable",
+          "resolved": true,
+          "fullPath": "/auth/mfa/disable"
+        },
+        {
+          "line": 177,
+          "method": "GET",
+          "handler": "googleAuth",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'oauth2/google'",
+          "routePath": "oauth2/google",
+          "resolved": true,
+          "fullPath": "/auth/oauth2/google"
+        },
+        {
+          "line": 183,
+          "method": "GET",
+          "handler": "googleCallback",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'oauth2/google/callback'",
+          "routePath": "oauth2/google/callback",
+          "resolved": true,
+          "fullPath": "/auth/oauth2/google/callback"
+        },
+        {
+          "line": 191,
+          "method": "GET",
+          "handler": "githubAuth",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'oauth2/github'",
+          "routePath": "oauth2/github",
+          "resolved": true,
+          "fullPath": "/auth/oauth2/github"
+        },
+        {
+          "line": 197,
+          "method": "GET",
+          "handler": "githubCallback",
+          "controllerClass": "AuthController",
+          "controllerBaseRaw": "'auth'",
+          "controllerBase": "auth",
+          "routeRaw": "'oauth2/github/callback'",
+          "routePath": "oauth2/github/callback",
+          "resolved": true,
+          "fullPath": "/auth/oauth2/github/callback"
+        }
+      ]
+    },
+    {
+      "file": "src/banner/banner.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'banners'",
+          "path": "banners",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getActive",
+          "controllerClass": "BannerController",
+          "controllerBaseRaw": "'banners'",
+          "controllerBase": "banners",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/banners"
+        },
+        {
+          "line": 15,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "BannerController",
+          "controllerBaseRaw": "'banners'",
+          "controllerBase": "banners",
+          "routeRaw": "'all'",
+          "routePath": "all",
+          "resolved": true,
+          "fullPath": "/banners/all"
+        },
+        {
+          "line": 20,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "BannerController",
+          "controllerBaseRaw": "'banners'",
+          "controllerBase": "banners",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/banners"
+        },
+        {
+          "line": 25,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "BannerController",
+          "controllerBaseRaw": "'banners'",
+          "controllerBase": "banners",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/banners/:id"
+        },
+        {
+          "line": 30,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "BannerController",
+          "controllerBaseRaw": "'banners'",
+          "controllerBase": "banners",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/banners/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/blog/blog.controller.ts",
+      "controllers": [
+        {
+          "line": 6,
+          "raw": "'blog'",
+          "path": "blog",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 11,
+          "method": "GET",
+          "handler": "getCategories",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'categories'",
+          "routePath": "categories",
+          "resolved": true,
+          "fullPath": "/blog/categories"
+        },
+        {
+          "line": 16,
+          "method": "POST",
+          "handler": "createCategory",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'categories'",
+          "routePath": "categories",
+          "resolved": true,
+          "fullPath": "/blog/categories"
+        },
+        {
+          "line": 22,
+          "method": "GET",
+          "handler": "getPosts",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'posts'",
+          "routePath": "posts",
+          "resolved": true,
+          "fullPath": "/blog/posts"
+        },
+        {
+          "line": 28,
+          "method": "GET",
+          "handler": "getPostBySlug",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'posts/:slug'",
+          "routePath": "posts/:slug",
+          "resolved": true,
+          "fullPath": "/blog/posts/:slug"
+        },
+        {
+          "line": 33,
+          "method": "POST",
+          "handler": "createPost",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'posts'",
+          "routePath": "posts",
+          "resolved": true,
+          "fullPath": "/blog/posts"
+        },
+        {
+          "line": 38,
+          "method": "PUT",
+          "handler": "updatePost",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'posts/:id'",
+          "routePath": "posts/:id",
+          "resolved": true,
+          "fullPath": "/blog/posts/:id"
+        },
+        {
+          "line": 43,
+          "method": "DELETE",
+          "handler": "deletePost",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'posts/:id'",
+          "routePath": "posts/:id",
+          "resolved": true,
+          "fullPath": "/blog/posts/:id"
+        },
+        {
+          "line": 48,
+          "method": "POST",
+          "handler": "addComment",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'posts/:id/comments'",
+          "routePath": "posts/:id/comments",
+          "resolved": true,
+          "fullPath": "/blog/posts/:id/comments"
+        },
+        {
+          "line": 53,
+          "method": "DELETE",
+          "handler": "deleteComment",
+          "controllerClass": "BlogController",
+          "controllerBaseRaw": "'blog'",
+          "controllerBase": "blog",
+          "routeRaw": "'comments/:id'",
+          "routePath": "comments/:id",
+          "resolved": true,
+          "fullPath": "/blog/comments/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/brand/brand.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'brands'",
+          "path": "brands",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "BrandController",
+          "controllerBaseRaw": "'brands'",
+          "controllerBase": "brands",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/brands"
+        },
+        {
+          "line": 16,
+          "method": "GET",
+          "handler": "getBySlug",
+          "controllerClass": "BrandController",
+          "controllerBaseRaw": "'brands'",
+          "controllerBase": "brands",
+          "routeRaw": "':slug'",
+          "routePath": ":slug",
+          "resolved": true,
+          "fullPath": "/brands/:slug"
+        },
+        {
+          "line": 21,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "BrandController",
+          "controllerBaseRaw": "'brands'",
+          "controllerBase": "brands",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/brands"
+        },
+        {
+          "line": 26,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "BrandController",
+          "controllerBaseRaw": "'brands'",
+          "controllerBase": "brands",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/brands/:id"
+        },
+        {
+          "line": 31,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "BrandController",
+          "controllerBaseRaw": "'brands'",
+          "controllerBase": "brands",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/brands/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/cart/cart.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'cart'",
+          "path": "cart",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getCart",
+          "controllerClass": "CartController",
+          "controllerBaseRaw": "'cart'",
+          "controllerBase": "cart",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/cart"
+        },
+        {
+          "line": 14,
+          "method": "POST",
+          "handler": "addItem",
+          "controllerClass": "CartController",
+          "controllerBaseRaw": "'cart'",
+          "controllerBase": "cart",
+          "routeRaw": "'items'",
+          "routePath": "items",
+          "resolved": true,
+          "fullPath": "/cart/items"
+        },
+        {
+          "line": 19,
+          "method": "PUT",
+          "handler": "updateItem",
+          "controllerClass": "CartController",
+          "controllerBaseRaw": "'cart'",
+          "controllerBase": "cart",
+          "routeRaw": "'items/:itemId'",
+          "routePath": "items/:itemId",
+          "resolved": true,
+          "fullPath": "/cart/items/:itemId"
+        },
+        {
+          "line": 24,
+          "method": "DELETE",
+          "handler": "removeItem",
+          "controllerClass": "CartController",
+          "controllerBaseRaw": "'cart'",
+          "controllerBase": "cart",
+          "routeRaw": "'items/:itemId'",
+          "routePath": "items/:itemId",
+          "resolved": true,
+          "fullPath": "/cart/items/:itemId"
+        },
+        {
+          "line": 29,
+          "method": "DELETE",
+          "handler": "clearCart",
+          "controllerClass": "CartController",
+          "controllerBaseRaw": "'cart'",
+          "controllerBase": "cart",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/cart"
+        },
+        {
+          "line": 34,
+          "method": "POST",
+          "handler": "applyCoupon",
+          "controllerClass": "CartController",
+          "controllerBaseRaw": "'cart'",
+          "controllerBase": "cart",
+          "routeRaw": "'coupon'",
+          "routePath": "coupon",
+          "resolved": true,
+          "fullPath": "/cart/coupon"
+        },
+        {
+          "line": 39,
+          "method": "DELETE",
+          "handler": "removeCoupon",
+          "controllerClass": "CartController",
+          "controllerBaseRaw": "'cart'",
+          "controllerBase": "cart",
+          "routeRaw": "'coupon'",
+          "routePath": "coupon",
+          "resolved": true,
+          "fullPath": "/cart/coupon"
+        }
+      ]
+    },
+    {
+      "file": "src/category/category.controller.ts",
+      "controllers": [
+        {
+          "line": 7,
+          "raw": "'categories'",
+          "path": "categories",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 12,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/categories"
+        },
+        {
+          "line": 18,
+          "method": "GET",
+          "handler": "getRootCategories",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "'root'",
+          "routePath": "root",
+          "resolved": true,
+          "fullPath": "/categories/root"
+        },
+        {
+          "line": 24,
+          "method": "GET",
+          "handler": "getFeatured",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "'featured'",
+          "routePath": "featured",
+          "resolved": true,
+          "fullPath": "/categories/featured"
+        },
+        {
+          "line": 30,
+          "method": "GET",
+          "handler": "getBySlug",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "'slug/:slug'",
+          "routePath": "slug/:slug",
+          "resolved": true,
+          "fullPath": "/categories/slug/:slug"
+        },
+        {
+          "line": 36,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/categories/:id"
+        },
+        {
+          "line": 41,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/categories"
+        },
+        {
+          "line": 46,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/categories/:id"
+        },
+        {
+          "line": 51,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/categories/:id"
+        },
+        {
+          "line": 56,
+          "method": "PATCH",
+          "handler": "toggleStatus",
+          "controllerClass": "CategoryController",
+          "controllerBaseRaw": "'categories'",
+          "controllerBase": "categories",
+          "routeRaw": "':id/toggle-status'",
+          "routePath": ":id/toggle-status",
+          "resolved": true,
+          "fullPath": "/categories/:id/toggle-status"
+        }
+      ]
+    },
+    {
+      "file": "src/chat/chat.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'chat'",
+          "path": "chat",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getMyRooms",
+          "controllerClass": "ChatController",
+          "controllerBaseRaw": "'chat'",
+          "controllerBase": "chat",
+          "routeRaw": "'rooms'",
+          "routePath": "rooms",
+          "resolved": true,
+          "fullPath": "/chat/rooms"
+        },
+        {
+          "line": 14,
+          "method": "POST",
+          "handler": "getOrCreateRoom",
+          "controllerClass": "ChatController",
+          "controllerBaseRaw": "'chat'",
+          "controllerBase": "chat",
+          "routeRaw": "'rooms'",
+          "routePath": "rooms",
+          "resolved": true,
+          "fullPath": "/chat/rooms"
+        },
+        {
+          "line": 19,
+          "method": "GET",
+          "handler": "getMessages",
+          "controllerClass": "ChatController",
+          "controllerBaseRaw": "'chat'",
+          "controllerBase": "chat",
+          "routeRaw": "'rooms/:roomId/messages'",
+          "routePath": "rooms/:roomId/messages",
+          "resolved": true,
+          "fullPath": "/chat/rooms/:roomId/messages"
+        },
+        {
+          "line": 24,
+          "method": "POST",
+          "handler": "sendMessage",
+          "controllerClass": "ChatController",
+          "controllerBaseRaw": "'chat'",
+          "controllerBase": "chat",
+          "routeRaw": "'rooms/:roomId/messages'",
+          "routePath": "rooms/:roomId/messages",
+          "resolved": true,
+          "fullPath": "/chat/rooms/:roomId/messages"
+        },
+        {
+          "line": 29,
+          "method": "POST",
+          "handler": "markRead",
+          "controllerClass": "ChatController",
+          "controllerBaseRaw": "'chat'",
+          "controllerBase": "chat",
+          "routeRaw": "'rooms/:roomId/read'",
+          "routePath": "rooms/:roomId/read",
+          "resolved": true,
+          "fullPath": "/chat/rooms/:roomId/read"
+        }
+      ]
+    },
+    {
+      "file": "src/cms/cms.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'cms'",
+          "path": "cms",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getPages",
+          "controllerClass": "CmsController",
+          "controllerBaseRaw": "'cms'",
+          "controllerBase": "cms",
+          "routeRaw": "'pages'",
+          "routePath": "pages",
+          "resolved": true,
+          "fullPath": "/cms/pages"
+        },
+        {
+          "line": 16,
+          "method": "GET",
+          "handler": "getBySlug",
+          "controllerClass": "CmsController",
+          "controllerBaseRaw": "'cms'",
+          "controllerBase": "cms",
+          "routeRaw": "'pages/:slug'",
+          "routePath": "pages/:slug",
+          "resolved": true,
+          "fullPath": "/cms/pages/:slug"
+        },
+        {
+          "line": 21,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "CmsController",
+          "controllerBaseRaw": "'cms'",
+          "controllerBase": "cms",
+          "routeRaw": "'pages'",
+          "routePath": "pages",
+          "resolved": true,
+          "fullPath": "/cms/pages"
+        },
+        {
+          "line": 26,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "CmsController",
+          "controllerBaseRaw": "'cms'",
+          "controllerBase": "cms",
+          "routeRaw": "'pages/:id'",
+          "routePath": "pages/:id",
+          "resolved": true,
+          "fullPath": "/cms/pages/:id"
+        },
+        {
+          "line": 31,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "CmsController",
+          "controllerBaseRaw": "'cms'",
+          "controllerBase": "cms",
+          "routeRaw": "'pages/:id'",
+          "routePath": "pages/:id",
+          "resolved": true,
+          "fullPath": "/cms/pages/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/collection/collection.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'collections'",
+          "path": "collections",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "CollectionController",
+          "controllerBaseRaw": "'collections'",
+          "controllerBase": "collections",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/collections"
+        },
+        {
+          "line": 16,
+          "method": "GET",
+          "handler": "getBySlug",
+          "controllerClass": "CollectionController",
+          "controllerBaseRaw": "'collections'",
+          "controllerBase": "collections",
+          "routeRaw": "':slug'",
+          "routePath": ":slug",
+          "resolved": true,
+          "fullPath": "/collections/:slug"
+        },
+        {
+          "line": 21,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "CollectionController",
+          "controllerBaseRaw": "'collections'",
+          "controllerBase": "collections",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/collections"
+        },
+        {
+          "line": 26,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "CollectionController",
+          "controllerBaseRaw": "'collections'",
+          "controllerBase": "collections",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/collections/:id"
+        },
+        {
+          "line": 31,
+          "method": "POST",
+          "handler": "addProducts",
+          "controllerClass": "CollectionController",
+          "controllerBaseRaw": "'collections'",
+          "controllerBase": "collections",
+          "routeRaw": "':id/products'",
+          "routePath": ":id/products",
+          "resolved": true,
+          "fullPath": "/collections/:id/products"
+        },
+        {
+          "line": 36,
+          "method": "DELETE",
+          "handler": "removeProduct",
+          "controllerClass": "CollectionController",
+          "controllerBaseRaw": "'collections'",
+          "controllerBase": "collections",
+          "routeRaw": "':id/products/:productId'",
+          "routePath": ":id/products/:productId",
+          "resolved": true,
+          "fullPath": "/collections/:id/products/:productId"
+        },
+        {
+          "line": 41,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "CollectionController",
+          "controllerBaseRaw": "'collections'",
+          "controllerBase": "collections",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/collections/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/coupon/coupon.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'coupons'",
+          "path": "coupons",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "CouponController",
+          "controllerBaseRaw": "'coupons'",
+          "controllerBase": "coupons",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/coupons"
+        },
+        {
+          "line": 15,
+          "method": "POST",
+          "handler": "validate",
+          "controllerClass": "CouponController",
+          "controllerBaseRaw": "'coupons'",
+          "controllerBase": "coupons",
+          "routeRaw": "'validate'",
+          "routePath": "validate",
+          "resolved": true,
+          "fullPath": "/coupons/validate"
+        },
+        {
+          "line": 20,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "CouponController",
+          "controllerBaseRaw": "'coupons'",
+          "controllerBase": "coupons",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/coupons"
+        },
+        {
+          "line": 25,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "CouponController",
+          "controllerBaseRaw": "'coupons'",
+          "controllerBase": "coupons",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/coupons/:id"
+        },
+        {
+          "line": 30,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "CouponController",
+          "controllerBaseRaw": "'coupons'",
+          "controllerBase": "coupons",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/coupons/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/faq/faq.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'faqs'",
+          "path": "faqs",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "FaqController",
+          "controllerBaseRaw": "'faqs'",
+          "controllerBase": "faqs",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/faqs"
+        },
+        {
+          "line": 15,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "FaqController",
+          "controllerBaseRaw": "'faqs'",
+          "controllerBase": "faqs",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/faqs"
+        },
+        {
+          "line": 20,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "FaqController",
+          "controllerBaseRaw": "'faqs'",
+          "controllerBase": "faqs",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/faqs/:id"
+        },
+        {
+          "line": 25,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "FaqController",
+          "controllerBaseRaw": "'faqs'",
+          "controllerBase": "faqs",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/faqs/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/files/files.controller.ts",
+      "controllers": [
+        {
+          "line": 15,
+          "raw": "'files'",
+          "path": "files",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 19,
+          "method": "POST",
+          "handler": "upload",
+          "controllerClass": "FilesController",
+          "controllerBaseRaw": "'files'",
+          "controllerBase": "files",
+          "routeRaw": "'upload'",
+          "routePath": "upload",
+          "resolved": true,
+          "fullPath": "/files/upload"
+        },
+        {
+          "line": 27,
+          "method": "POST",
+          "handler": "uploadAvatar",
+          "controllerClass": "FilesController",
+          "controllerBaseRaw": "'files'",
+          "controllerBase": "files",
+          "routeRaw": "'upload/avatar'",
+          "routePath": "upload/avatar",
+          "resolved": true,
+          "fullPath": "/files/upload/avatar"
+        },
+        {
+          "line": 35,
+          "method": "DELETE",
+          "handler": "deleteFile",
+          "controllerClass": "FilesController",
+          "controllerBaseRaw": "'files'",
+          "controllerBase": "files",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/files"
+        }
+      ]
+    },
+    {
+      "file": "src/flash-sale/flash-sale.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'flash-sales'",
+          "path": "flash-sales",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getActive",
+          "controllerClass": "FlashSaleController",
+          "controllerBaseRaw": "'flash-sales'",
+          "controllerBase": "flash-sales",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/flash-sales"
+        },
+        {
+          "line": 16,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "FlashSaleController",
+          "controllerBaseRaw": "'flash-sales'",
+          "controllerBase": "flash-sales",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/flash-sales/:id"
+        },
+        {
+          "line": 21,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "FlashSaleController",
+          "controllerBaseRaw": "'flash-sales'",
+          "controllerBase": "flash-sales",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/flash-sales"
+        },
+        {
+          "line": 26,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "FlashSaleController",
+          "controllerBaseRaw": "'flash-sales'",
+          "controllerBase": "flash-sales",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/flash-sales/:id"
+        },
+        {
+          "line": 31,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "FlashSaleController",
+          "controllerBaseRaw": "'flash-sales'",
+          "controllerBase": "flash-sales",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/flash-sales/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/gift-card/gift-card.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'gift-cards'",
+          "path": "gift-cards",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getMyCards",
+          "controllerClass": "GiftCardController",
+          "controllerBaseRaw": "'gift-cards'",
+          "controllerBase": "gift-cards",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/gift-cards"
+        },
+        {
+          "line": 14,
+          "method": "GET",
+          "handler": "getByCode",
+          "controllerClass": "GiftCardController",
+          "controllerBaseRaw": "'gift-cards'",
+          "controllerBase": "gift-cards",
+          "routeRaw": "':code'",
+          "routePath": ":code",
+          "resolved": true,
+          "fullPath": "/gift-cards/:code"
+        },
+        {
+          "line": 19,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "GiftCardController",
+          "controllerBaseRaw": "'gift-cards'",
+          "controllerBase": "gift-cards",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/gift-cards"
+        },
+        {
+          "line": 24,
+          "method": "POST",
+          "handler": "redeem",
+          "controllerClass": "GiftCardController",
+          "controllerBaseRaw": "'gift-cards'",
+          "controllerBase": "gift-cards",
+          "routeRaw": "':code/redeem'",
+          "routePath": ":code/redeem",
+          "resolved": true,
+          "fullPath": "/gift-cards/:code/redeem"
+        }
+      ]
+    },
+    {
+      "file": "src/health/health.controller.ts",
+      "controllers": [
+        {
+          "line": 14,
+          "raw": "'health'",
+          "path": "health",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 23,
+          "method": "GET",
+          "handler": "healthCheck",
+          "controllerClass": "HealthController",
+          "controllerBaseRaw": "'health'",
+          "controllerBase": "health",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/health"
+        },
+        {
+          "line": 30,
+          "method": "GET",
+          "handler": "check",
+          "controllerClass": "HealthController",
+          "controllerBaseRaw": "'health'",
+          "controllerBase": "health",
+          "routeRaw": "'detailed'",
+          "routePath": "detailed",
+          "resolved": true,
+          "fullPath": "/health/detailed"
+        },
+        {
+          "line": 43,
+          "method": "GET",
+          "handler": "checkDatabase",
+          "controllerClass": "HealthController",
+          "controllerBaseRaw": "'health'",
+          "controllerBase": "health",
+          "routeRaw": "'database'",
+          "routePath": "database",
+          "resolved": true,
+          "fullPath": "/health/database"
+        },
+        {
+          "line": 52,
+          "method": "GET",
+          "handler": "checkRedis",
+          "controllerClass": "HealthController",
+          "controllerBaseRaw": "'health'",
+          "controllerBase": "health",
+          "routeRaw": "'redis'",
+          "routePath": "redis",
+          "resolved": true,
+          "fullPath": "/health/redis"
+        },
+        {
+          "line": 61,
+          "method": "GET",
+          "handler": "checkMinio",
+          "controllerClass": "HealthController",
+          "controllerBaseRaw": "'health'",
+          "controllerBase": "health",
+          "routeRaw": "'minio'",
+          "routePath": "minio",
+          "resolved": true,
+          "fullPath": "/health/minio"
+        }
+      ]
+    },
+    {
+      "file": "src/loyalty/loyalty.controller.ts",
+      "controllers": [
+        {
+          "line": 6,
+          "raw": "'loyalty'",
+          "path": "loyalty",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 11,
+          "method": "GET",
+          "handler": "getPrograms",
+          "controllerClass": "LoyaltyController",
+          "controllerBaseRaw": "'loyalty'",
+          "controllerBase": "loyalty",
+          "routeRaw": "'programs'",
+          "routePath": "programs",
+          "resolved": true,
+          "fullPath": "/loyalty/programs"
+        },
+        {
+          "line": 16,
+          "method": "GET",
+          "handler": "getMyMembership",
+          "controllerClass": "LoyaltyController",
+          "controllerBaseRaw": "'loyalty'",
+          "controllerBase": "loyalty",
+          "routeRaw": "'membership'",
+          "routePath": "membership",
+          "resolved": true,
+          "fullPath": "/loyalty/membership"
+        },
+        {
+          "line": 21,
+          "method": "POST",
+          "handler": "join",
+          "controllerClass": "LoyaltyController",
+          "controllerBaseRaw": "'loyalty'",
+          "controllerBase": "loyalty",
+          "routeRaw": "'join'",
+          "routePath": "join",
+          "resolved": true,
+          "fullPath": "/loyalty/join"
+        },
+        {
+          "line": 26,
+          "method": "GET",
+          "handler": "getTransactions",
+          "controllerClass": "LoyaltyController",
+          "controllerBaseRaw": "'loyalty'",
+          "controllerBase": "loyalty",
+          "routeRaw": "'transactions'",
+          "routePath": "transactions",
+          "resolved": true,
+          "fullPath": "/loyalty/transactions"
+        },
+        {
+          "line": 31,
+          "method": "POST",
+          "handler": "redeemPoints",
+          "controllerClass": "LoyaltyController",
+          "controllerBaseRaw": "'loyalty'",
+          "controllerBase": "loyalty",
+          "routeRaw": "'redeem'",
+          "routePath": "redeem",
+          "resolved": true,
+          "fullPath": "/loyalty/redeem"
+        },
+        {
+          "line": 36,
+          "method": "POST",
+          "handler": "createProgram",
+          "controllerClass": "LoyaltyController",
+          "controllerBaseRaw": "'loyalty'",
+          "controllerBase": "loyalty",
+          "routeRaw": "'programs'",
+          "routePath": "programs",
+          "resolved": true,
+          "fullPath": "/loyalty/programs"
+        }
+      ]
+    },
+    {
+      "file": "src/newsletter/newsletter.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'newsletter'",
+          "path": "newsletter",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "POST",
+          "handler": "subscribe",
+          "controllerClass": "NewsletterController",
+          "controllerBaseRaw": "'newsletter'",
+          "controllerBase": "newsletter",
+          "routeRaw": "'subscribe'",
+          "routePath": "subscribe",
+          "resolved": true,
+          "fullPath": "/newsletter/subscribe"
+        },
+        {
+          "line": 16,
+          "method": "POST",
+          "handler": "unsubscribe",
+          "controllerClass": "NewsletterController",
+          "controllerBaseRaw": "'newsletter'",
+          "controllerBase": "newsletter",
+          "routeRaw": "'unsubscribe'",
+          "routePath": "unsubscribe",
+          "resolved": true,
+          "fullPath": "/newsletter/unsubscribe"
+        },
+        {
+          "line": 21,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "NewsletterController",
+          "controllerBaseRaw": "'newsletter'",
+          "controllerBase": "newsletter",
+          "routeRaw": "'subscribers'",
+          "routePath": "subscribers",
+          "resolved": true,
+          "fullPath": "/newsletter/subscribers"
+        }
+      ]
+    },
+    {
+      "file": "src/notifications/notifications.controller.ts",
+      "controllers": [
+        {
+          "line": 24,
+          "raw": "'notifications'",
+          "path": "notifications",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 28,
+          "method": "GET",
+          "handler": "getNotifications",
+          "controllerClass": "NotificationsController",
+          "controllerBaseRaw": "'notifications'",
+          "controllerBase": "notifications",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/notifications"
+        },
+        {
+          "line": 40,
+          "method": "GET",
+          "handler": "getUnread",
+          "controllerClass": "NotificationsController",
+          "controllerBaseRaw": "'notifications'",
+          "controllerBase": "notifications",
+          "routeRaw": "'unread'",
+          "routePath": "unread",
+          "resolved": true,
+          "fullPath": "/notifications/unread"
+        },
+        {
+          "line": 52,
+          "method": "GET",
+          "handler": "getByType",
+          "controllerClass": "NotificationsController",
+          "controllerBaseRaw": "'notifications'",
+          "controllerBase": "notifications",
+          "routeRaw": "'type/:type'",
+          "routePath": "type/:type",
+          "resolved": true,
+          "fullPath": "/notifications/type/:type"
+        },
+        {
+          "line": 65,
+          "method": "GET",
+          "handler": "getUnreadCount",
+          "controllerClass": "NotificationsController",
+          "controllerBaseRaw": "'notifications'",
+          "controllerBase": "notifications",
+          "routeRaw": "'unread-count'",
+          "routePath": "unread-count",
+          "resolved": true,
+          "fullPath": "/notifications/unread-count"
+        },
+        {
+          "line": 72,
+          "method": "PATCH",
+          "handler": "markAsRead",
+          "controllerClass": "NotificationsController",
+          "controllerBaseRaw": "'notifications'",
+          "controllerBase": "notifications",
+          "routeRaw": "':id/read'",
+          "routePath": ":id/read",
+          "resolved": true,
+          "fullPath": "/notifications/:id/read"
+        },
+        {
+          "line": 79,
+          "method": "PATCH",
+          "handler": "markAsUnread",
+          "controllerClass": "NotificationsController",
+          "controllerBaseRaw": "'notifications'",
+          "controllerBase": "notifications",
+          "routeRaw": "':id/unread'",
+          "routePath": ":id/unread",
+          "resolved": true,
+          "fullPath": "/notifications/:id/unread"
+        },
+        {
+          "line": 86,
+          "method": "PATCH",
+          "handler": "markAllAsRead",
+          "controllerClass": "NotificationsController",
+          "controllerBaseRaw": "'notifications'",
+          "controllerBase": "notifications",
+          "routeRaw": "'read-all'",
+          "routePath": "read-all",
+          "resolved": true,
+          "fullPath": "/notifications/read-all"
+        },
+        {
+          "line": 93,
+          "method": "DELETE",
+          "handler": "deleteNotification",
+          "controllerClass": "NotificationsController",
+          "controllerBaseRaw": "'notifications'",
+          "controllerBase": "notifications",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/notifications/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/order/order.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'orders'",
+          "path": "orders",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getMyOrders",
+          "controllerClass": "OrderController",
+          "controllerBaseRaw": "'orders'",
+          "controllerBase": "orders",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/orders"
+        },
+        {
+          "line": 14,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "OrderController",
+          "controllerBaseRaw": "'orders'",
+          "controllerBase": "orders",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/orders/:id"
+        },
+        {
+          "line": 19,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "OrderController",
+          "controllerBaseRaw": "'orders'",
+          "controllerBase": "orders",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/orders"
+        },
+        {
+          "line": 24,
+          "method": "PATCH",
+          "handler": "cancel",
+          "controllerClass": "OrderController",
+          "controllerBaseRaw": "'orders'",
+          "controllerBase": "orders",
+          "routeRaw": "':id/cancel'",
+          "routePath": ":id/cancel",
+          "resolved": true,
+          "fullPath": "/orders/:id/cancel"
+        }
+      ]
+    },
+    {
+      "file": "src/payment/payment.controller.ts",
+      "controllers": [
+        {
+          "line": 6,
+          "raw": "'payments'",
+          "path": "payments",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getByOrder",
+          "controllerClass": "PaymentController",
+          "controllerBaseRaw": "'payments'",
+          "controllerBase": "payments",
+          "routeRaw": "'order/:orderId'",
+          "routePath": "order/:orderId",
+          "resolved": true,
+          "fullPath": "/payments/order/:orderId"
+        },
+        {
+          "line": 15,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "PaymentController",
+          "controllerBaseRaw": "'payments'",
+          "controllerBase": "payments",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/payments"
+        },
+        {
+          "line": 20,
+          "method": "PATCH",
+          "handler": "updateStatus",
+          "controllerClass": "PaymentController",
+          "controllerBaseRaw": "'payments'",
+          "controllerBase": "payments",
+          "routeRaw": "':id/status'",
+          "routePath": ":id/status",
+          "resolved": true,
+          "fullPath": "/payments/:id/status"
+        },
+        {
+          "line": 26,
+          "method": "POST",
+          "handler": "webhook",
+          "controllerClass": "PaymentController",
+          "controllerBaseRaw": "'payments'",
+          "controllerBase": "payments",
+          "routeRaw": "'webhook/:provider'",
+          "routePath": "webhook/:provider",
+          "resolved": true,
+          "fullPath": "/payments/webhook/:provider"
+        }
+      ]
+    },
+    {
+      "file": "src/product-question/product-question.controller.ts",
+      "controllers": [
+        {
+          "line": 6,
+          "raw": "'product-questions'",
+          "path": "product-questions",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 11,
+          "method": "GET",
+          "handler": "getByProduct",
+          "controllerClass": "ProductQuestionController",
+          "controllerBaseRaw": "'product-questions'",
+          "controllerBase": "product-questions",
+          "routeRaw": "'product/:productId'",
+          "routePath": "product/:productId",
+          "resolved": true,
+          "fullPath": "/product-questions/product/:productId"
+        },
+        {
+          "line": 16,
+          "method": "POST",
+          "handler": "ask",
+          "controllerClass": "ProductQuestionController",
+          "controllerBaseRaw": "'product-questions'",
+          "controllerBase": "product-questions",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/product-questions"
+        },
+        {
+          "line": 21,
+          "method": "POST",
+          "handler": "answer",
+          "controllerClass": "ProductQuestionController",
+          "controllerBaseRaw": "'product-questions'",
+          "controllerBase": "product-questions",
+          "routeRaw": "':id/answer'",
+          "routePath": ":id/answer",
+          "resolved": true,
+          "fullPath": "/product-questions/:id/answer"
+        }
+      ]
+    },
+    {
+      "file": "src/product/product.controller.ts",
+      "controllers": [
+        {
+          "line": 9,
+          "raw": "'products'",
+          "path": "products",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 17,
+          "method": "GET",
+          "handler": "filter",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'filter'",
+          "routePath": "filter",
+          "resolved": true,
+          "fullPath": "/products/filter"
+        },
+        {
+          "line": 38,
+          "method": "GET",
+          "handler": "getFeatured",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'featured'",
+          "routePath": "featured",
+          "resolved": true,
+          "fullPath": "/products/featured"
+        },
+        {
+          "line": 44,
+          "method": "GET",
+          "handler": "getNewArrivals",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'new-arrivals'",
+          "routePath": "new-arrivals",
+          "resolved": true,
+          "fullPath": "/products/new-arrivals"
+        },
+        {
+          "line": 50,
+          "method": "GET",
+          "handler": "getBestSellers",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'best-sellers'",
+          "routePath": "best-sellers",
+          "resolved": true,
+          "fullPath": "/products/best-sellers"
+        },
+        {
+          "line": 56,
+          "method": "GET",
+          "handler": "getDeals",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'deals'",
+          "routePath": "deals",
+          "resolved": true,
+          "fullPath": "/products/deals"
+        },
+        {
+          "line": 62,
+          "method": "GET",
+          "handler": "getBySlug",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'slug/:slug'",
+          "routePath": "slug/:slug",
+          "resolved": true,
+          "fullPath": "/products/slug/:slug"
+        },
+        {
+          "line": 68,
+          "method": "GET",
+          "handler": "getShopProducts",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'shop/:shopId'",
+          "routePath": "shop/:shopId",
+          "resolved": true,
+          "fullPath": "/products/shop/:shopId"
+        },
+        {
+          "line": 74,
+          "method": "GET",
+          "handler": "getRelated",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "':id/related'",
+          "routePath": ":id/related",
+          "resolved": true,
+          "fullPath": "/products/:id/related"
+        },
+        {
+          "line": 80,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/products/:id"
+        },
+        {
+          "line": 85,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/products"
+        },
+        {
+          "line": 91,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/products/:id"
+        },
+        {
+          "line": 97,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/products/:id"
+        },
+        {
+          "line": 104,
+          "method": "PUT",
+          "handler": "publish",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "':id/publish'",
+          "routePath": ":id/publish",
+          "resolved": true,
+          "fullPath": "/products/:id/publish"
+        },
+        {
+          "line": 113,
+          "method": "GET",
+          "handler": "getRecentlyViewed",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recently-viewed/me'",
+          "routePath": "recently-viewed/me",
+          "resolved": true,
+          "fullPath": "/products/recently-viewed/me"
+        },
+        {
+          "line": 119,
+          "method": "POST",
+          "handler": "recordView",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "':id/view'",
+          "routePath": ":id/view",
+          "resolved": true,
+          "fullPath": "/products/:id/view"
+        },
+        {
+          "line": 128,
+          "method": "GET",
+          "handler": "getPersonalizedRecommendations",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/personalized'",
+          "routePath": "recommendations/personalized",
+          "resolved": true,
+          "fullPath": "/products/recommendations/personalized"
+        },
+        {
+          "line": 137,
+          "method": "GET",
+          "handler": "getSimilarProducts",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/similar/:productId'",
+          "routePath": "recommendations/similar/:productId",
+          "resolved": true,
+          "fullPath": "/products/recommendations/similar/:productId"
+        },
+        {
+          "line": 145,
+          "method": "GET",
+          "handler": "getTrendingProducts",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/trending'",
+          "routePath": "recommendations/trending",
+          "resolved": true,
+          "fullPath": "/products/recommendations/trending"
+        },
+        {
+          "line": 153,
+          "method": "GET",
+          "handler": "getPopularProducts",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/popular'",
+          "routePath": "recommendations/popular",
+          "resolved": true,
+          "fullPath": "/products/recommendations/popular"
+        },
+        {
+          "line": 161,
+          "method": "GET",
+          "handler": "getFrequentlyBoughtTogether",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/frequently-bought/:productId'",
+          "routePath": "recommendations/frequently-bought/:productId",
+          "resolved": true,
+          "fullPath": "/products/recommendations/frequently-bought/:productId"
+        },
+        {
+          "line": 168,
+          "method": "POST",
+          "handler": "trackProductView",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/track/view'",
+          "routePath": "recommendations/track/view",
+          "resolved": true,
+          "fullPath": "/products/recommendations/track/view"
+        },
+        {
+          "line": 175,
+          "method": "POST",
+          "handler": "trackPurchase",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/track/purchase'",
+          "routePath": "recommendations/track/purchase",
+          "resolved": true,
+          "fullPath": "/products/recommendations/track/purchase"
+        },
+        {
+          "line": 182,
+          "method": "POST",
+          "handler": "trackAddToCart",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/track/cart'",
+          "routePath": "recommendations/track/cart",
+          "resolved": true,
+          "fullPath": "/products/recommendations/track/cart"
+        },
+        {
+          "line": 189,
+          "method": "GET",
+          "handler": "getRecommendationStats",
+          "controllerClass": "ProductController",
+          "controllerBaseRaw": "'products'",
+          "controllerBase": "products",
+          "routeRaw": "'recommendations/stats'",
+          "routePath": "recommendations/stats",
+          "resolved": true,
+          "fullPath": "/products/recommendations/stats"
+        }
+      ]
+    },
+    {
+      "file": "src/promotion/promotion.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'promotions'",
+          "path": "promotions",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getActive",
+          "controllerClass": "PromotionController",
+          "controllerBaseRaw": "'promotions'",
+          "controllerBase": "promotions",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/promotions"
+        },
+        {
+          "line": 15,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "PromotionController",
+          "controllerBaseRaw": "'promotions'",
+          "controllerBase": "promotions",
+          "routeRaw": "'all'",
+          "routePath": "all",
+          "resolved": true,
+          "fullPath": "/promotions/all"
+        },
+        {
+          "line": 21,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "PromotionController",
+          "controllerBaseRaw": "'promotions'",
+          "controllerBase": "promotions",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/promotions/:id"
+        },
+        {
+          "line": 26,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "PromotionController",
+          "controllerBaseRaw": "'promotions'",
+          "controllerBase": "promotions",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/promotions"
+        },
+        {
+          "line": 31,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "PromotionController",
+          "controllerBaseRaw": "'promotions'",
+          "controllerBase": "promotions",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/promotions/:id"
+        },
+        {
+          "line": 36,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "PromotionController",
+          "controllerBaseRaw": "'promotions'",
+          "controllerBase": "promotions",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/promotions/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/return/return.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'returns'",
+          "path": "returns",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getMyReturns",
+          "controllerClass": "ReturnController",
+          "controllerBaseRaw": "'returns'",
+          "controllerBase": "returns",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/returns"
+        },
+        {
+          "line": 14,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "ReturnController",
+          "controllerBaseRaw": "'returns'",
+          "controllerBase": "returns",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/returns/:id"
+        },
+        {
+          "line": 19,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "ReturnController",
+          "controllerBaseRaw": "'returns'",
+          "controllerBase": "returns",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/returns"
+        }
+      ]
+    },
+    {
+      "file": "src/review/review.controller.ts",
+      "controllers": [
+        {
+          "line": 6,
+          "raw": "'reviews'",
+          "path": "reviews",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 11,
+          "method": "GET",
+          "handler": "getByProduct",
+          "controllerClass": "ReviewController",
+          "controllerBaseRaw": "'reviews'",
+          "controllerBase": "reviews",
+          "routeRaw": "'product/:productId'",
+          "routePath": "product/:productId",
+          "resolved": true,
+          "fullPath": "/reviews/product/:productId"
+        },
+        {
+          "line": 16,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "ReviewController",
+          "controllerBaseRaw": "'reviews'",
+          "controllerBase": "reviews",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/reviews"
+        },
+        {
+          "line": 21,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "ReviewController",
+          "controllerBaseRaw": "'reviews'",
+          "controllerBase": "reviews",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/reviews/:id"
+        },
+        {
+          "line": 26,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "ReviewController",
+          "controllerBaseRaw": "'reviews'",
+          "controllerBase": "reviews",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/reviews/:id"
+        },
+        {
+          "line": 31,
+          "method": "POST",
+          "handler": "reply",
+          "controllerClass": "ReviewController",
+          "controllerBaseRaw": "'reviews'",
+          "controllerBase": "reviews",
+          "routeRaw": "':id/reply'",
+          "routePath": ":id/reply",
+          "resolved": true,
+          "fullPath": "/reviews/:id/reply"
+        },
+        {
+          "line": 36,
+          "method": "POST",
+          "handler": "helpful",
+          "controllerClass": "ReviewController",
+          "controllerBaseRaw": "'reviews'",
+          "controllerBase": "reviews",
+          "routeRaw": "':id/helpful'",
+          "routePath": ":id/helpful",
+          "resolved": true,
+          "fullPath": "/reviews/:id/helpful"
+        }
+      ]
+    },
+    {
+      "file": "src/shipping/shipping.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'shipping'",
+          "path": "shipping",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 10,
+          "method": "GET",
+          "handler": "getMethods",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'methods'",
+          "routePath": "methods",
+          "resolved": true,
+          "fullPath": "/shipping/methods"
+        },
+        {
+          "line": 15,
+          "method": "GET",
+          "handler": "getAllMethods",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'methods/all'",
+          "routePath": "methods/all",
+          "resolved": true,
+          "fullPath": "/shipping/methods/all"
+        },
+        {
+          "line": 20,
+          "method": "POST",
+          "handler": "createMethod",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'methods'",
+          "routePath": "methods",
+          "resolved": true,
+          "fullPath": "/shipping/methods"
+        },
+        {
+          "line": 25,
+          "method": "PUT",
+          "handler": "updateMethod",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'methods/:id'",
+          "routePath": "methods/:id",
+          "resolved": true,
+          "fullPath": "/shipping/methods/:id"
+        },
+        {
+          "line": 30,
+          "method": "DELETE",
+          "handler": "deleteMethod",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'methods/:id'",
+          "routePath": "methods/:id",
+          "resolved": true,
+          "fullPath": "/shipping/methods/:id"
+        },
+        {
+          "line": 35,
+          "method": "GET",
+          "handler": "getByOrder",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'shipments/order/:orderId'",
+          "routePath": "shipments/order/:orderId",
+          "resolved": true,
+          "fullPath": "/shipping/shipments/order/:orderId"
+        },
+        {
+          "line": 40,
+          "method": "GET",
+          "handler": "getShipment",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'shipments/:id'",
+          "routePath": "shipments/:id",
+          "resolved": true,
+          "fullPath": "/shipping/shipments/:id"
+        },
+        {
+          "line": 45,
+          "method": "POST",
+          "handler": "createShipment",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'shipments'",
+          "routePath": "shipments",
+          "resolved": true,
+          "fullPath": "/shipping/shipments"
+        },
+        {
+          "line": 50,
+          "method": "PATCH",
+          "handler": "updateShipment",
+          "controllerClass": "ShippingController",
+          "controllerBaseRaw": "'shipping'",
+          "controllerBase": "shipping",
+          "routeRaw": "'shipments/:id'",
+          "routePath": "shipments/:id",
+          "resolved": true,
+          "fullPath": "/shipping/shipments/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/shop/shop.controller.ts",
+      "controllers": [
+        {
+          "line": 6,
+          "raw": "'shops'",
+          "path": "shops",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 11,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "ShopController",
+          "controllerBaseRaw": "'shops'",
+          "controllerBase": "shops",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/shops"
+        },
+        {
+          "line": 16,
+          "method": "GET",
+          "handler": "getMyShop",
+          "controllerClass": "ShopController",
+          "controllerBaseRaw": "'shops'",
+          "controllerBase": "shops",
+          "routeRaw": "'my-shop'",
+          "routePath": "my-shop",
+          "resolved": true,
+          "fullPath": "/shops/my-shop"
+        },
+        {
+          "line": 22,
+          "method": "GET",
+          "handler": "getBySlug",
+          "controllerClass": "ShopController",
+          "controllerBaseRaw": "'shops'",
+          "controllerBase": "shops",
+          "routeRaw": "':slug'",
+          "routePath": ":slug",
+          "resolved": true,
+          "fullPath": "/shops/:slug"
+        },
+        {
+          "line": 27,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "ShopController",
+          "controllerBaseRaw": "'shops'",
+          "controllerBase": "shops",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/shops"
+        },
+        {
+          "line": 32,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "ShopController",
+          "controllerBaseRaw": "'shops'",
+          "controllerBase": "shops",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/shops/:id"
+        },
+        {
+          "line": 37,
+          "method": "POST",
+          "handler": "follow",
+          "controllerClass": "ShopController",
+          "controllerBaseRaw": "'shops'",
+          "controllerBase": "shops",
+          "routeRaw": "':id/follow'",
+          "routePath": ":id/follow",
+          "resolved": true,
+          "fullPath": "/shops/:id/follow"
+        },
+        {
+          "line": 42,
+          "method": "DELETE",
+          "handler": "unfollow",
+          "controllerClass": "ShopController",
+          "controllerBaseRaw": "'shops'",
+          "controllerBase": "shops",
+          "routeRaw": "':id/follow'",
+          "routePath": ":id/follow",
+          "resolved": true,
+          "fullPath": "/shops/:id/follow"
+        },
+        {
+          "line": 47,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "ShopController",
+          "controllerBaseRaw": "'shops'",
+          "controllerBase": "shops",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/shops/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/subscription/subscription.controller.ts",
+      "controllers": [
+        {
+          "line": 6,
+          "raw": "'subscriptions'",
+          "path": "subscriptions",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 11,
+          "method": "GET",
+          "handler": "getPlans",
+          "controllerClass": "SubscriptionController",
+          "controllerBaseRaw": "'subscriptions'",
+          "controllerBase": "subscriptions",
+          "routeRaw": "'plans'",
+          "routePath": "plans",
+          "resolved": true,
+          "fullPath": "/subscriptions/plans"
+        },
+        {
+          "line": 16,
+          "method": "GET",
+          "handler": "getMySubscription",
+          "controllerClass": "SubscriptionController",
+          "controllerBaseRaw": "'subscriptions'",
+          "controllerBase": "subscriptions",
+          "routeRaw": "'my'",
+          "routePath": "my",
+          "resolved": true,
+          "fullPath": "/subscriptions/my"
+        },
+        {
+          "line": 21,
+          "method": "POST",
+          "handler": "subscribe",
+          "controllerClass": "SubscriptionController",
+          "controllerBaseRaw": "'subscriptions'",
+          "controllerBase": "subscriptions",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/subscriptions"
+        },
+        {
+          "line": 26,
+          "method": "POST",
+          "handler": "cancel",
+          "controllerClass": "SubscriptionController",
+          "controllerBaseRaw": "'subscriptions'",
+          "controllerBase": "subscriptions",
+          "routeRaw": "'cancel'",
+          "routePath": "cancel",
+          "resolved": true,
+          "fullPath": "/subscriptions/cancel"
+        },
+        {
+          "line": 31,
+          "method": "POST",
+          "handler": "createPlan",
+          "controllerClass": "SubscriptionController",
+          "controllerBaseRaw": "'subscriptions'",
+          "controllerBase": "subscriptions",
+          "routeRaw": "'plans'",
+          "routePath": "plans",
+          "resolved": true,
+          "fullPath": "/subscriptions/plans"
+        },
+        {
+          "line": 36,
+          "method": "PUT",
+          "handler": "updatePlan",
+          "controllerClass": "SubscriptionController",
+          "controllerBaseRaw": "'subscriptions'",
+          "controllerBase": "subscriptions",
+          "routeRaw": "'plans/:id'",
+          "routePath": "plans/:id",
+          "resolved": true,
+          "fullPath": "/subscriptions/plans/:id"
+        }
+      ]
+    },
+    {
+      "file": "src/support/support.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'support'",
+          "path": "support",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getMyTickets",
+          "controllerClass": "SupportController",
+          "controllerBaseRaw": "'support'",
+          "controllerBase": "support",
+          "routeRaw": "'tickets'",
+          "routePath": "tickets",
+          "resolved": true,
+          "fullPath": "/support/tickets"
+        },
+        {
+          "line": 14,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "SupportController",
+          "controllerBaseRaw": "'support'",
+          "controllerBase": "support",
+          "routeRaw": "'tickets/:id'",
+          "routePath": "tickets/:id",
+          "resolved": true,
+          "fullPath": "/support/tickets/:id"
+        },
+        {
+          "line": 19,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "SupportController",
+          "controllerBaseRaw": "'support'",
+          "controllerBase": "support",
+          "routeRaw": "'tickets'",
+          "routePath": "tickets",
+          "resolved": true,
+          "fullPath": "/support/tickets"
+        },
+        {
+          "line": 24,
+          "method": "POST",
+          "handler": "reply",
+          "controllerClass": "SupportController",
+          "controllerBaseRaw": "'support'",
+          "controllerBase": "support",
+          "routeRaw": "'tickets/:id/reply'",
+          "routePath": "tickets/:id/reply",
+          "resolved": true,
+          "fullPath": "/support/tickets/:id/reply"
+        },
+        {
+          "line": 29,
+          "method": "PATCH",
+          "handler": "close",
+          "controllerClass": "SupportController",
+          "controllerBaseRaw": "'support'",
+          "controllerBase": "support",
+          "routeRaw": "'tickets/:id/close'",
+          "routePath": "tickets/:id/close",
+          "resolved": true,
+          "fullPath": "/support/tickets/:id/close"
+        }
+      ]
+    },
+    {
+      "file": "src/users/users.controller.ts",
+      "controllers": [
+        {
+          "line": 32,
+          "raw": "'users/me'",
+          "path": "users/me",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 41,
+          "method": "GET",
+          "handler": "getMe",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/users/me"
+        },
+        {
+          "line": 47,
+          "method": "PUT",
+          "handler": "updateProfile",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/users/me"
+        },
+        {
+          "line": 62,
+          "method": "DELETE",
+          "handler": "deleteMe",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/users/me"
+        },
+        {
+          "line": 73,
+          "method": "POST",
+          "handler": "cancelDelete",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'cancel-delete'",
+          "routePath": "cancel-delete",
+          "resolved": true,
+          "fullPath": "/users/me/cancel-delete"
+        },
+        {
+          "line": 82,
+          "method": "GET",
+          "handler": "getNotificationPreferences",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'notification-preferences'",
+          "routePath": "notification-preferences",
+          "resolved": true,
+          "fullPath": "/users/me/notification-preferences"
+        },
+        {
+          "line": 88,
+          "method": "PUT",
+          "handler": "updateNotificationPreferences",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'notification-preferences'",
+          "routePath": "notification-preferences",
+          "resolved": true,
+          "fullPath": "/users/me/notification-preferences"
+        },
+        {
+          "line": 99,
+          "method": "GET",
+          "handler": "getPrivacySettings",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'privacy'",
+          "routePath": "privacy",
+          "resolved": true,
+          "fullPath": "/users/me/privacy"
+        },
+        {
+          "line": 105,
+          "method": "PUT",
+          "handler": "updatePrivacySettings",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'privacy'",
+          "routePath": "privacy",
+          "resolved": true,
+          "fullPath": "/users/me/privacy"
+        },
+        {
+          "line": 116,
+          "method": "POST",
+          "handler": "updateFcmToken",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'fcm-token'",
+          "routePath": "fcm-token",
+          "resolved": true,
+          "fullPath": "/users/me/fcm-token"
+        },
+        {
+          "line": 128,
+          "method": "GET",
+          "handler": "getDevices",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'devices'",
+          "routePath": "devices",
+          "resolved": true,
+          "fullPath": "/users/me/devices"
+        },
+        {
+          "line": 134,
+          "method": "POST",
+          "handler": "trustDevice",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'devices/:id/trust'",
+          "routePath": "devices/:id/trust",
+          "resolved": true,
+          "fullPath": "/users/me/devices/:id/trust"
+        },
+        {
+          "line": 141,
+          "method": "POST",
+          "handler": "untrustDevice",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'devices/:id/untrust'",
+          "routePath": "devices/:id/untrust",
+          "resolved": true,
+          "fullPath": "/users/me/devices/:id/untrust"
+        },
+        {
+          "line": 148,
+          "method": "DELETE",
+          "handler": "removeDevice",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'devices/:id'",
+          "routePath": "devices/:id",
+          "resolved": true,
+          "fullPath": "/users/me/devices/:id"
+        },
+        {
+          "line": 158,
+          "method": "POST",
+          "handler": "setupSecurityQuestions",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'security-questions'",
+          "routePath": "security-questions",
+          "resolved": true,
+          "fullPath": "/users/me/security-questions"
+        },
+        {
+          "line": 168,
+          "method": "GET",
+          "handler": "getSecurityQuestions",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'security-questions'",
+          "routePath": "security-questions",
+          "resolved": true,
+          "fullPath": "/users/me/security-questions"
+        },
+        {
+          "line": 176,
+          "method": "GET",
+          "handler": "getSessions",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'sessions'",
+          "routePath": "sessions",
+          "resolved": true,
+          "fullPath": "/users/me/sessions"
+        },
+        {
+          "line": 182,
+          "method": "DELETE",
+          "handler": "deleteSession",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'sessions/:id'",
+          "routePath": "sessions/:id",
+          "resolved": true,
+          "fullPath": "/users/me/sessions/:id"
+        },
+        {
+          "line": 196,
+          "method": "GET",
+          "handler": "getLoginHistory",
+          "controllerClass": "UsersController",
+          "controllerBaseRaw": "'users/me'",
+          "controllerBase": "users/me",
+          "routeRaw": "'login-history'",
+          "routePath": "login-history",
+          "resolved": true,
+          "fullPath": "/users/me/login-history"
+        }
+      ]
+    },
+    {
+      "file": "src/wallet/wallet.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'wallet'",
+          "path": "wallet",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getWallet",
+          "controllerClass": "WalletController",
+          "controllerBaseRaw": "'wallet'",
+          "controllerBase": "wallet",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/wallet"
+        },
+        {
+          "line": 14,
+          "method": "GET",
+          "handler": "getTransactions",
+          "controllerClass": "WalletController",
+          "controllerBaseRaw": "'wallet'",
+          "controllerBase": "wallet",
+          "routeRaw": "'transactions'",
+          "routePath": "transactions",
+          "resolved": true,
+          "fullPath": "/wallet/transactions"
+        },
+        {
+          "line": 19,
+          "method": "POST",
+          "handler": "topUp",
+          "controllerClass": "WalletController",
+          "controllerBaseRaw": "'wallet'",
+          "controllerBase": "wallet",
+          "routeRaw": "'top-up'",
+          "routePath": "top-up",
+          "resolved": true,
+          "fullPath": "/wallet/top-up"
+        }
+      ]
+    },
+    {
+      "file": "src/warehouse/warehouse.controller.ts",
+      "controllers": [
+        {
+          "line": 4,
+          "raw": "'warehouses'",
+          "path": "warehouses",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 8,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "WarehouseController",
+          "controllerBaseRaw": "'warehouses'",
+          "controllerBase": "warehouses",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/warehouses"
+        },
+        {
+          "line": 13,
+          "method": "GET",
+          "handler": "getById",
+          "controllerClass": "WarehouseController",
+          "controllerBaseRaw": "'warehouses'",
+          "controllerBase": "warehouses",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/warehouses/:id"
+        },
+        {
+          "line": 18,
+          "method": "POST",
+          "handler": "create",
+          "controllerClass": "WarehouseController",
+          "controllerBaseRaw": "'warehouses'",
+          "controllerBase": "warehouses",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/warehouses"
+        },
+        {
+          "line": 23,
+          "method": "PUT",
+          "handler": "update",
+          "controllerClass": "WarehouseController",
+          "controllerBaseRaw": "'warehouses'",
+          "controllerBase": "warehouses",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/warehouses/:id"
+        },
+        {
+          "line": 28,
+          "method": "DELETE",
+          "handler": "delete",
+          "controllerClass": "WarehouseController",
+          "controllerBaseRaw": "'warehouses'",
+          "controllerBase": "warehouses",
+          "routeRaw": "':id'",
+          "routePath": ":id",
+          "resolved": true,
+          "fullPath": "/warehouses/:id"
+        },
+        {
+          "line": 33,
+          "method": "GET",
+          "handler": "getStocks",
+          "controllerClass": "WarehouseController",
+          "controllerBaseRaw": "'warehouses'",
+          "controllerBase": "warehouses",
+          "routeRaw": "':id/stocks'",
+          "routePath": ":id/stocks",
+          "resolved": true,
+          "fullPath": "/warehouses/:id/stocks"
+        },
+        {
+          "line": 38,
+          "method": "POST",
+          "handler": "updateStock",
+          "controllerClass": "WarehouseController",
+          "controllerBaseRaw": "'warehouses'",
+          "controllerBase": "warehouses",
+          "routeRaw": "':id/stocks'",
+          "routePath": ":id/stocks",
+          "resolved": true,
+          "fullPath": "/warehouses/:id/stocks"
+        }
+      ]
+    },
+    {
+      "file": "src/wishlist/wishlist.controller.ts",
+      "controllers": [
+        {
+          "line": 5,
+          "raw": "'wishlist'",
+          "path": "wishlist",
+          "resolved": true
+        }
+      ],
+      "endpoints": [
+        {
+          "line": 9,
+          "method": "GET",
+          "handler": "getAll",
+          "controllerClass": "WishlistController",
+          "controllerBaseRaw": "'wishlist'",
+          "controllerBase": "wishlist",
+          "routeRaw": "",
+          "routePath": "",
+          "resolved": true,
+          "fullPath": "/wishlist"
+        },
+        {
+          "line": 14,
+          "method": "POST",
+          "handler": "toggle",
+          "controllerClass": "WishlistController",
+          "controllerBaseRaw": "'wishlist'",
+          "controllerBase": "wishlist",
+          "routeRaw": "':productId'",
+          "routePath": ":productId",
+          "resolved": true,
+          "fullPath": "/wishlist/:productId"
+        },
+        {
+          "line": 19,
+          "method": "GET",
+          "handler": "check",
+          "controllerClass": "WishlistController",
+          "controllerBaseRaw": "'wishlist'",
+          "controllerBase": "wishlist",
+          "routeRaw": "':productId/check'",
+          "routePath": ":productId/check",
+          "resolved": true,
+          "fullPath": "/wishlist/:productId/check"
+        },
+        {
+          "line": 24,
+          "method": "DELETE",
+          "handler": "remove",
+          "controllerClass": "WishlistController",
+          "controllerBaseRaw": "'wishlist'",
+          "controllerBase": "wishlist",
+          "routeRaw": "':productId'",
+          "routePath": ":productId",
+          "resolved": true,
+          "fullPath": "/wishlist/:productId"
+        }
+      ]
+    }
+  ],
+  "endpointCountResolved": 264,
+  "missing": {
+    "Users": [
+      "PUT /users/me/password",
+      "GET /users",
+      "GET /users/:id",
+      "PUT /users/:id/toggle-status",
+      "PUT /users/:id/role"
+    ],
+    "Address": [
+      "PUT /addresses/:id/default"
+    ],
+    "Category": [],
+    "Brand": [
+      "GET /brands/:id",
+      "GET /brands/search"
+    ],
+    "Shop": [
+      "GET /shops/slug/:slug",
+      "GET /shops/search",
+      "GET /shops/top",
+      "POST /shops/:shopId/follow",
+      "DELETE /shops/:shopId/follow"
+    ],
+    "Wishlist": [
+      "POST /wishlist/:productId/toggle",
+      "GET /wishlist/check/:productId",
+      "GET /wishlist/count",
+      "DELETE /wishlist"
+    ],
+    "Notifications": [
+      "GET /notifications/unread/count",
+      "PUT /notifications/:id/read",
+      "PUT /notifications/read-all"
+    ],
+    "Coupon": [
+      "GET /coupons/active",
+      "PUT /coupons/:id/toggle"
+    ],
+    "Payment": [
+      "POST /payments/create-intent/:orderId",
+      "POST /payments/confirm",
+      "POST /payments/cod/:orderId",
+      "POST /payments/refund/:orderId"
+    ],
+    "Chat": [
+      "PUT /chat/rooms/:roomId/read",
+      "GET /chat/unread-count"
+    ],
+    "Blog": [
+      "GET /blog/posts/slug/:slug",
+      "GET /blog/posts/featured",
+      "GET /blog/posts/search",
+      "GET /blog/posts/category/:categoryId"
+    ],
+    "Support": [
+      "PUT /support/tickets/:id/close"
+    ],
+    "Dashboard": [
+      "GET /dashboard/admin",
+      "GET /dashboard/seller/:shopId",
+      "GET /dashboard/admin/revenue",
+      "GET /dashboard/admin/orders-chart"
+    ],
+    "Files": [
+      "POST /files/upload/image",
+      "POST /files/upload/multiple"
+    ],
+    "Banners": [
+      "GET /banners/active"
+    ],
+    "Flash Sales": [
+      "GET /flash-sales/active",
+      "GET /flash-sales/upcoming"
+    ],
+    "Shipping": [
+      "GET /shipping/methods/active",
+      "GET /shipping/methods/calculate"
+    ]
+  },
+  "dashboardControllerFiles": []
+}
