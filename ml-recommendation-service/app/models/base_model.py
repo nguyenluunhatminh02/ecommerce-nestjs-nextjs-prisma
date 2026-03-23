@@ -94,7 +94,7 @@ class BaseModel(ABC):
             Path where model was saved
         """
         if path is None:
-            path = os.path.join(settings.model_storage_path, f"{self.model_type}_model.pkl")
+            path = os.path.join(settings.ml_model_dir, f"{self.model_type}_model.pkl")
         
         os.makedirs(os.path.dirname(path), exist_ok=True)
         
@@ -126,7 +126,7 @@ class BaseModel(ABC):
             path: Path to load model from (uses default if None)
         """
         if path is None:
-            path = os.path.join(settings.model_storage_path, f"{self.model_type}_model.pkl")
+            path = os.path.join(settings.ml_model_dir, f"{self.model_type}_model.pkl")
         
         if not os.path.exists(path):
             logger.warning(f"Model file not found: {path}")

@@ -41,6 +41,7 @@ export default function ProductDetailPage() {
   const [relatedProducts, setRelatedProducts] = useState<ProductResponse[]>([]);
   const [similarProducts, setSimilarProducts] = useState<ProductResponse[]>([]);
   const [frequentlyBought, setFrequentlyBought] = useState<ProductResponse[]>([]);
+  const [personalizedProducts, setPersonalizedProducts] = useState<ProductResponse[]>([]);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedVariant, setSelectedVariant] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
@@ -90,15 +91,19 @@ export default function ProductDetailPage() {
 
         // Fetch ML-powered similar products
         try {
-          const [similarRes, freqRes] = await Promise.all([
+          const [similarRes, freqRes, personalizedRes] = await Promise.all([
             recommendationService.getSimilar(data.id, 6),
             recommendationService.getFrequentlyBought(data.id),
+            recommendationService.getPersonalized(6),
           ]);
           if (similarRes?.enrichedProducts?.length) {
             setSimilarProducts(similarRes.enrichedProducts);
           }
           if (freqRes?.enrichedProducts?.length) {
             setFrequentlyBought(freqRes.enrichedProducts);
+          }
+          if (personalizedRes?.enrichedProducts?.length) {
+            setPersonalizedProducts(personalizedRes.enrichedProducts);
           }
         } catch {
           // ML recommendations not critical
@@ -474,9 +479,9 @@ export default function ProductDetailPage() {
               <div className="flex items-start gap-8 mb-8 p-6 bg-muted/20 rounded-xl">
                 <div className="text-center">
                   <div className="text-5xl font-bold text-primary">
-                    {product.averageRating.toFixed(1)}
+                    {(product.averageRating ?? 0).toFixed(1)}
                   </div>
-                  <StarRating rating={product.averageRating} size="lg" className="justify-center mt-2" />
+                  <StarRating rating={product.averageRating ?? 0} size="lg" className="justify-center mt-2" />
                   <p className="text-sm text-muted-foreground mt-1">{product.totalReviews} đánh giá</p>
                 </div>
                 <div className="flex-1 space-y-2">
@@ -502,6 +507,13 @@ export default function ProductDetailPage() {
 
               {/* Reviews list */}
               <div className="space-y-6">
+                {(!reviews?.content || reviews.content.length === 0) && (
+                  <div className="text-center py-12 text-muted-foreground">
+                    <MessageCircle className="w-10 h-10 mx-auto mb-3 opacity-30" />
+                    <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+                    <p className="text-sm mt-1">Hãy là người đầu tiên đánh giá!</p>
+                  </div>
+                )}
                 {reviews?.content.map((review) => (
                   <div key={review.id} className="border-b pb-6">
                     <div className="flex items-start gap-3">
@@ -609,6 +621,21 @@ export default function ProductDetailPage() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {frequentlyBought.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Personalized Recommendations */}
+      {personalizedProducts.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+            Gợi ý cho bạn
+            <span className="text-xs font-normal bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 px-2 py-0.5 rounded-full">AI</span>
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {personalizedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>

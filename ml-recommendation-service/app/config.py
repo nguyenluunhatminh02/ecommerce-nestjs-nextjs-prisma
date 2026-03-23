@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     redis_max_connections: int = 50
     
     # ML Models
-    model_storage_path: str = "./ml/models"
+    ml_model_dir: str = "./ml/models"
     svd_n_components: int = 100
     svd_n_iter: int = 10
     nmf_n_components: int = 100
@@ -94,6 +94,7 @@ class Settings(BaseSettings):
         env_file = ".env"
         env_file_encoding = "utf-8"
         case_sensitive = False
+        protected_namespaces = ()  # Allow model_ prefix in field names
 
 
 # Global settings instance

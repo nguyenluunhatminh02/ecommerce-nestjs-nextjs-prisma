@@ -55,11 +55,8 @@ async def health_check():
     else:
         models_status['nmf'] = "not_loaded"
     
-    # Overall status
-    overall_status = "healthy" if (
-        db_status == "connected" and
-        redis_status == "connected"
-    ) else "unhealthy"
+    # Overall status - Redis is optional (cache), service is healthy if DB is connected
+    overall_status = "healthy" if db_status == "connected" else "unhealthy"
     
     return HealthResponse(
         status=overall_status,

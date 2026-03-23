@@ -24,14 +24,18 @@ class CacheService:
                 settings.redis_url,
                 encoding="utf-8",
                 decode_responses=True,
-                max_connections=settings.redis_max_connections
+                max_connections=settings.redis_max_connections,
+                socket_connect_timeout=5,  # 5 seconds timeout
+                socket_timeout=5,
+                retry_on_timeout=True
             )
             # Test connection
             await self.redis.ping()
             logger.info("Redis connection established")
         except Exception as e:
             logger.error("Failed to connect to Redis", extra={"error": str(e)})
-            raise
+            # Don't raise - Redis is optional, service can work without it
+            self.redis = None
     
     async def disconnect(self) -> None:
         """Close Redis connection"""
@@ -42,13 +46,15 @@ class CacheService:
     async def get(self, key: str) -> Optional[Any]:
         """
         Get value from cache
-        
+
         Args:
             key: Cache key
-            
+
         Returns:
             Cached value or None if not found
         """
+        if self.redis is None:
+            return None
         try:
             value = await self.redis.get(key)
             if value is not None:
@@ -66,15 +72,17 @@ class CacheService:
     ) -> bool:
         """
         Set value in cache
-        
+
         Args:
             key: Cache key
             value: Value to cache
             ttl: Time to live in seconds (uses default if None)
-            
+
         Returns:
             True if successful, False otherwise
         """
+        if self.redis is None:
+            return False
         try:
             serialized = json.dumps(value)
             await self.redis.setex(key, ttl or self.ttl, serialized)
@@ -86,13 +94,15 @@ class CacheService:
     async def delete(self, key: str) -> bool:
         """
         Delete key from cache
-        
+
         Args:
             key: Cache key
-            
+
         Returns:
             True if successful, False otherwise
         """
+        if self.redis is None:
+            return False
         try:
             await self.redis.delete(key)
             return True
@@ -103,21 +113,23 @@ class CacheService:
     async def delete_pattern(self, pattern: str) -> int:
         """
         Delete keys matching pattern
-        
+
         Args:
             pattern: Key pattern (e.g., "user:*")
-            
+
         Returns:
             Number of keys deleted
         """
+        if self.redis is None:
+            return 0
         try:
             keys = []
             async for key in self.redis.scan_iter(match=pattern):
                 keys.append(key)
-            
+
             if keys:
                 await self.redis.delete(*keys)
-            
+
             return len(keys)
         except Exception as e:
             logger.error("Cache pattern delete failed", extra={"pattern": pattern, "error": str(e)})
@@ -126,13 +138,15 @@ class CacheService:
     async def exists(self, key: str) -> bool:
         """
         Check if key exists in cache
-        
+
         Args:
             key: Cache key
-            
+
         Returns:
             True if key exists, False otherwise
         """
+        if self.redis is None:
+            return False
         try:
             return await self.redis.exists(key) > 0
         except Exception as e:
@@ -142,13 +156,15 @@ class CacheService:
     async def get_many(self, keys: List[str]) -> Dict[str, Any]:
         """
         Get multiple values from cache
-        
+
         Args:
             keys: List of cache keys
-            
+
         Returns:
             Dictionary of key-value pairs for found keys
         """
+        if self.redis is None:
+            return {}
         try:
             values = await self.redis.mget(keys)
             result = {}
@@ -167,14 +183,16 @@ class CacheService:
     ) -> bool:
         """
         Set multiple values in cache
-        
+
         Args:
             mapping: Dictionary of key-value pairs
             ttl: Time to live in seconds
-            
+
         Returns:
             True if successful, False otherwise
         """
+        if self.redis is None:
+            return False
         try:
             pipe = self.redis.pipeline()
             for key, value in mapping.items():
@@ -189,14 +207,16 @@ class CacheService:
     async def increment(self, key: str, amount: int = 1) -> int:
         """
         Increment numeric value in cache
-        
+
         Args:
             key: Cache key
             amount: Amount to increment by
-            
+
         Returns:
             New value after increment
         """
+        if self.redis is None:
+            return 0
         try:
             return await self.redis.incrby(key, amount)
         except Exception as e:
@@ -231,10 +251,12 @@ class CacheService:
     async def get_stats(self) -> Dict[str, Any]:
         """
         Get cache statistics
-        
+
         Returns:
             Dictionary with cache stats
         """
+        if self.redis is None:
+            return {"status": "disconnected"}
         try:
             info = await self.redis.info("stats")
             return {
