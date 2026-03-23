@@ -520,17 +520,17 @@ export default function ProductDetailPage() {
                       {review.userAvatar ? (
                         <img
                           src={review.userAvatar}
-                          alt={review.userName}
+                          alt={review.userName ?? 'User'}
                           className="w-10 h-10 rounded-full"
                         />
                       ) : (
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium text-primary">
-                          {review.userName.charAt(0)}
+                          {(review.userName ?? 'U').charAt(0).toUpperCase()}
                         </div>
                       )}
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium text-sm">{review.userName}</span>
+                          <span className="font-medium text-sm">{review.userName ?? 'Ẩn danh'}</span>
                           {review.verified && (
                             <Badge variant="success" size="sm">
                               Đã mua hàng
@@ -552,8 +552,8 @@ export default function ProductDetailPage() {
                           </div>
                         )}
                         <div className="flex items-center gap-4 mt-3 text-xs text-muted-foreground">
-                          <span>{timeAgo(review.createdAt)}</span>
-                          <button className="hover:text-primary">Hữu ích ({review.helpful})</button>
+                          <span>{review.createdAt ? timeAgo(review.createdAt) : ''}</span>
+                          <button className="hover:text-primary">Hữu ích ({review.helpful ?? 0})</button>
                         </div>
                         {review.reply && (
                           <div className="mt-3 bg-muted/30 p-3 rounded-lg">
