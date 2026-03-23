@@ -2,7 +2,8 @@
 Configuration management for ML Recommendation Service
 """
 from pydantic_settings import BaseSettings
-from typing import Optional
+from pydantic import field_validator
+from typing import Optional, Union
 
 
 class Settings(BaseSettings):
@@ -61,10 +62,26 @@ class Settings(BaseSettings):
     log_format: str = "json"
     
     # CORS
-    cors_origins: list[str] = ["*"]
+    cors_origins: Union[list[str], str] = "*"
     cors_allow_credentials: bool = True
     cors_allow_methods: list[str] = ["*"]
     cors_allow_headers: list[str] = ["*"]
+
+    @field_validator('cors_origins', mode='before')
+    @classmethod
+    def parse_cors_origins(cls, v):
+        if isinstance(v, list):
+            return v
+        if isinstance(v, str):
+            # If it's a JSON array, parse it
+            if v.startswith('[') and v.endswith(']'):
+                import json
+                return json.loads(v)
+            # If it's a comma-separated string, split it
+            if v == "*":
+                return ["*"]
+            return [origin.strip() for origin in v.split(',') if origin.strip()]
+        return ["*"]
     
     class Config:
         env_file = ".env"
