@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Put, Body, Param, Query } from '@nestjs/common';
 import { SubscriptionService } from './subscription.service';
-import { Public } from '../auth/decorators/public.decorator';
-import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
+import { CurrentUser } from '../common/decorators/auth/current-user.decorator';
 
 @Controller('subscriptions')
 export class SubscriptionController {

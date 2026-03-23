@@ -37,6 +37,11 @@ export default function AffiliatePage() {
     try {
       const data = await affiliateService.join(programId);
       setMyAffiliate(data);
+      // Re-fetch stats now that we're an affiliate
+      try {
+        const newStats = await affiliateService.getStats();
+        setStats(newStats);
+      } catch { /* ignore */ }
       toast.success('Tham gia chương trình thành công!');
     } catch {
       toast.error('Không thể tham gia');
@@ -79,18 +84,22 @@ export default function AffiliatePage() {
               <h1 className="text-2xl font-bold">Chương Trình Affiliate</h1>
             </div>
             <p className="text-white/80 mb-4">Mã giới thiệu: <span className="font-mono font-bold">{myAffiliate.code || myAffiliate.referralCode}</span></p>
-            {myAffiliate.referralLink && (
-              <div className="flex items-center gap-2 bg-white/20 rounded-lg p-3">
-                <LinkIcon className="w-4 h-4 shrink-0" />
-                <span className="text-sm truncate flex-1">{myAffiliate.referralLink}</span>
-                <button
-                  onClick={() => copyLink(myAffiliate.referralLink)}
-                  className="bg-white/30 p-2 rounded hover:bg-white/40 transition-colors"
-                >
-                  <Copy className="w-4 h-4" />
-                </button>
-              </div>
-            )}
+            {(() => {
+              const link = myAffiliate.referralLink ||
+                (myAffiliate.referralCode ? `${window.location.origin}/?ref=${myAffiliate.referralCode}` : null);
+              return link ? (
+                <div className="flex items-center gap-2 bg-white/20 rounded-lg p-3">
+                  <LinkIcon className="w-4 h-4 shrink-0" />
+                  <span className="text-sm truncate flex-1">{link}</span>
+                  <button
+                    onClick={() => copyLink(link)}
+                    className="bg-white/30 p-2 rounded hover:bg-white/40 transition-colors"
+                  >
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : null;
+            })()}
           </div>
 
           {stats && (

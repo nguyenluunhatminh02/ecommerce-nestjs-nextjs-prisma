@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
 import { BannerService } from './banner.service';
-import { Public } from '../auth/decorators/public.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
 
 @Controller('banners')
 export class BannerController {

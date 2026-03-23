@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Put, Param, Query, Body } from '@nestjs/common';
 import { ChatService } from './chat.service';
-import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { CurrentUser } from '../common/decorators/auth/current-user.decorator';
 
 @Controller('chat')
 export class ChatController {

@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Put, Delete, Patch, Body, Param, Query } from '@nestjs/common';
 import { ShippingService } from './shipping.service';
-import { Public } from '../auth/decorators/public.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
 
 @Controller('shipping')
 export class ShippingController {

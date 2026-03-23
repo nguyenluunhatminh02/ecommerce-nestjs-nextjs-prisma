@@ -3,7 +3,7 @@ import {
   HealthCheck,
   HealthCheckService,
 } from '@nestjs/terminus';
-import { Public } from '../auth/decorators/public.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
 import { RedisHealthIndicator } from './redis.health-indicator';
 import { MinioHealthIndicator } from './minio.health-indicator';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';

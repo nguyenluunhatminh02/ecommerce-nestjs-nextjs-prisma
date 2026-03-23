@@ -1,11 +1,14 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { ProductService } from './product.service';
 import { MLRecommendationFacade } from './ml-recommendation-facade.service';
 import { ApiResponse } from '../common/utils/api-response.util';
-import { Public } from '../auth/decorators/public.decorator';
-import { CurrentUser } from '../auth/decorators/current-user.decorator';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Public } from '../common/decorators/auth/public.decorator';
+import { CurrentUser } from '../common/decorators/auth/current-user.decorator';
+import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
+import { ProductFilterDto, CreateProductDto, UpdateProductDto } from './dto';
 
+@ApiTags('products')
 @Controller('products')
 export class ProductController {
   constructor(
@@ -15,21 +18,15 @@ export class ProductController {
 
   @Public()
   @Get('filter')
-  async filter(
-    @Query('page') page?: number, @Query('size') size?: number,
-    @Query('search') search?: string, @Query('keyword') keyword?: string,
-    @Query('categoryId') categoryId?: string, @Query('category') categorySlug?: string,
-    @Query('brandId') brandId?: string, @Query('shopId') shopId?: string,
-    @Query('minPrice') minPrice?: number, @Query('maxPrice') maxPrice?: number,
-    @Query('minRating') minRating?: number, @Query('status') status?: string,
-    @Query('featured') featured?: boolean, @Query('isFeatured') isFeatured?: boolean,
-    @Query('sortBy') sortBy?: string,
-    @Query('sortDir') sortDir?: string, @Query('sortDirection') sortDirection?: string,
-    @Query('inStock') inStock?: boolean, @Query('onSale') onSale?: boolean,
-  ) {
+  @ApiOperation({ summary: 'Filter and search products' })
+  async filter(@Query() filterDto: ProductFilterDto) {
+    const { keyword, category: categorySlug, isFeatured, sortDirection, ...rest } = filterDto;
     const result = await this.productService.filter({
-      page, size, search: search || keyword, categoryId, categorySlug, brandId, shopId,
-      minPrice, maxPrice, minRating, status, featured: featured ?? isFeatured, sortBy, sortDir: sortDir || sortDirection, inStock, onSale,
+      ...rest,
+      search: rest.search || keyword,
+      categorySlug,
+      featured: rest.featured ?? isFeatured,
+      sortDir: rest.sortDir || sortDirection,
     });
     return ApiResponse.success(result);
   }
@@ -84,13 +81,17 @@ export class ProductController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  async create(@Body() body: any, @CurrentUser('id') userId: string) {
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Create a new product' })
+  async create(@Body() body: CreateProductDto, @CurrentUser('id') userId: string) {
     return ApiResponse.success(await this.productService.create(body, userId), 'Product created');
   }
 
   @Put(':id')
   @UseGuards(JwtAuthGuard)
-  async update(@Param('id') id: string, @Body() body: any, @CurrentUser('id') userId: string) {
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Update a product' })
+  async update(@Param('id') id: string, @Body() body: UpdateProductDto, @CurrentUser('id') userId: string) {
     return ApiResponse.success(await this.productService.update(id, body, userId), 'Product updated');
   }
 

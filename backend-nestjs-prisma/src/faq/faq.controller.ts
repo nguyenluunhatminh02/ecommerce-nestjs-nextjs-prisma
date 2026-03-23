@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
 import { FaqService } from './faq.service';
-import { Public } from '../auth/decorators/public.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
 
 @Controller('faqs')
 export class FaqController {

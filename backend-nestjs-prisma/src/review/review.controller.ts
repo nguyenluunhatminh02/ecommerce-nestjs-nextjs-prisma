@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
 import { ReviewService } from './review.service';
-import { Public } from '../auth/decorators/public.decorator';
-import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
+import { CurrentUser } from '../common/decorators/auth/current-user.decorator';
 
 @Controller('reviews')
 export class ReviewController {

@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
 import { BrandService } from './brand.service';
-import { Public } from '../auth/decorators/public.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
 
 @Controller('brands')
 export class BrandController {

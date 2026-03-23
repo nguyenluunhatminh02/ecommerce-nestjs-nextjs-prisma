@@ -18,6 +18,7 @@ import { PrismaModule } from '../prisma/prisma.module';
           host: config.get<string>('redis.host'),
           port: config.get<number>('redis.port'),
           password: config.get<string>('redis.password') || undefined,
+          tls: config.get<string>('REDIS_TLS') === 'true' ? {} : undefined,
         },
         defaultJobOptions: {
           removeOnComplete: { age: 3600, count: 100 }, // keep last 100 or 1 hour

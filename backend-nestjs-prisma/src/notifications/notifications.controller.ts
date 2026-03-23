@@ -14,10 +14,10 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation, ApiQuery } from '@nestjs/swagger';
 import { NotificationsService } from './notifications.service';
-import { CurrentUser } from '../auth/decorators/current-user.decorator';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { CurrentUser } from '../common/decorators/auth/current-user.decorator';
+import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { User } from '../users/entities/user.entity';
-import { NotificationType } from '../users/enums/notification-type.enum';
+import { NotificationType } from '../common/enums/notification-type.enum';
 
 @ApiTags('notifications')
 @ApiBearerAuth()

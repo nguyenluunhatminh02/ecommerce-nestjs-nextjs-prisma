@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Delete, Param, Query } from '@nestjs/common';
 import { WishlistService } from './wishlist.service';
-import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { CurrentUser } from '../common/decorators/auth/current-user.decorator';
 
 @Controller('wishlist')
 export class WishlistController {

@@ -30,10 +30,12 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
    */
   private async connectWithRetry(retryCount = 0): Promise<void> {
     try {
+      const tls = this.config.get<string>('REDIS_TLS') === 'true' ? {} : undefined;
       this.client = new Redis({
         host: this.config.get<string>('redis.host'),
         port: this.config.get<number>('redis.port'),
         password: this.config.get<string>('redis.password') || undefined,
+        tls,
         lazyConnect: true,
         retryStrategy: (times) => {
           if (times > this.MAX_RETRIES) return null;

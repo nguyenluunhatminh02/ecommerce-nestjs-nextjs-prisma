@@ -2,8 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Notification } from './entities/notification.entity';
 import { NotificationResponse } from '../auth/dto/auth-response.dto';
 import { PageResponse, buildPageResponse } from '../common/utils/pagination.util';
-import { NotificationType } from '../users/enums/notification-type.enum';
-import { NotificationChannel } from '../users/enums/notification-channel.enum';
+import { NotificationType } from '../common/enums/notification-type.enum';
+import { NotificationChannel } from '../common/enums/notification-channel.enum';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()

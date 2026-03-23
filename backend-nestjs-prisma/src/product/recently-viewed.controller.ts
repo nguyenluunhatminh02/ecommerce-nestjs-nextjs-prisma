@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Delete, Param, Query, UseGuards } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { CurrentUser } from '../auth/decorators/current-user.decorator';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { CurrentUser } from '../common/decorators/auth/current-user.decorator';
+import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { ApiResponse } from '../common/utils/api-response.util';
 
 @Controller('recently-viewed')

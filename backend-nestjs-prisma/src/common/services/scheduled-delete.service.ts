@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { DeleteStatus } from '../../users/enums/delete-status.enum';
+import { DeleteStatus } from '../../common/enums/delete-status.enum';
 import { DELETE_GRACE_PERIOD_MS } from '../constants/auth.constants';
 import { PrismaService } from '../../prisma/prisma.service';
 

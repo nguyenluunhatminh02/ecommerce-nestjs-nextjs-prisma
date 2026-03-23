@@ -19,10 +19,10 @@ import { LoginDto } from './dto/login.dto';
 import { MfaLoginDto, MfaVerifyDto } from './dto/mfa.dto';
 import { ChangePasswordDto, ForgotPasswordDto, ResetPasswordDto } from './dto/password.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { GoogleOAuthGuard, GithubOAuthGuard } from './guards/oauth.guard';
-import { CurrentUser } from './decorators/current-user.decorator';
-import { Public } from './decorators/public.decorator';
+import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
+import { GoogleOAuthGuard, GithubOAuthGuard } from '../common/guards/oauth.guard';
+import { CurrentUser } from '../common/decorators/auth/current-user.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
 import { User } from '../users/entities/user.entity';
 import { ConfigService } from '@nestjs/config';
 

@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Delete, Body, Query } from '@nestjs/common';
 import { NewsletterService } from './newsletter.service';
-import { Public } from '../auth/decorators/public.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
 
 @Controller('newsletter')
 export class NewsletterController {

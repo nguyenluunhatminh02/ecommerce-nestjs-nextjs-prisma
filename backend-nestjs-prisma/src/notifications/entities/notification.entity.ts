@@ -7,8 +7,8 @@ import {
   Index,
 } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
-import { NotificationType } from '../../users/enums/notification-type.enum';
-import { NotificationChannel } from '../../users/enums/notification-channel.enum';
+import { NotificationType } from '../../common/enums/notification-type.enum';
+import { NotificationChannel } from '../../common/enums/notification-channel.enum';
 
 @Entity('notifications')
 @Index('idx_notification_user_id', ['user'])

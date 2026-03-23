@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Query, Param } from '@nestjs/common';
 import { AnalyticsService } from './analytics.service';
-import { Public } from '../auth/decorators/public.decorator';
+import { Public } from '../common/decorators/auth/public.decorator';
 import { ApiResponse } from '../common/utils/api-response.util';
 
 function periodToDateRange(period?: string): { from: string; to: string } {
