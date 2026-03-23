@@ -14,7 +14,7 @@ export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
     const callbackURL = config.get<string>('oauth2.github.callbackUrl') || 'http://localhost:4000/api/v1/auth/oauth2/github/callback';
 
     if (clientID === 'DISABLED') {
-      GithubStrategy.logger.warn('GitHub OAuth is disabled — GITHUB_CLIENT_ID not set');
+      GithubStrategy.logger.warn('GitHub OAuth is disabled - GITHUB_CLIENT_ID not set');
     }
 
     super({ clientID, clientSecret, callbackURL, scope: ['user:email'] });
