@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { BaseEntity } from '../../common/entities/base.entity';
-import { AuthProvider } from '../enums/auth-provider.enum';
-import { DeleteStatus } from '../enums/delete-status.enum';
+import { AuthProvider } from '../../common/enums/auth-provider.enum';
+import { DeleteStatus } from '../../common/enums/delete-status.enum';
 import { RefreshToken } from './refresh-token.entity';
 import { LoginHistory } from './login-history.entity';
 import { Role } from './role.entity';

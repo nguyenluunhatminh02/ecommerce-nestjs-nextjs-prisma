@@ -268,7 +268,7 @@ export default function CheckoutPage() {
   const selectedShipping = shippingMethods.find((m) => m.id === shippingMethodId) ?? null;
   const subtotal = cart?.items?.reduce((sum, item) => sum + item.price * item.quantity, 0) || 0;
   const discount = cart?.discount || 0;
-  const shippingCost = selectedShipping?.baseCost ?? selectedShipping?.baseRate ?? 0;
+  const shippingCost = selectedShipping?.baseRate ?? 0;
   const total = subtotal + shippingCost - discount;
 
   if (isLoading) {
@@ -393,10 +393,10 @@ export default function CheckoutPage() {
                       </div>
                     </div>
                     <span className="text-sm font-medium">
-                      {Number(method.baseCost ?? method.baseRate) === 0 ? (
+                      {Number(method.baseRate) === 0 ? (
                         <span className="text-green-600">Miễn phí</span>
                       ) : (
-                        formatCurrency(Number(method.baseCost ?? method.baseRate))
+                        formatCurrency(Number(method.baseRate))
                       )}
                     </span>
                   </label>

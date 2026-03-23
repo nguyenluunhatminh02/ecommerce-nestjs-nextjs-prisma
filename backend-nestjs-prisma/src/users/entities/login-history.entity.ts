@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 import { User } from './user.entity';
-import { LoginAction } from '../enums/login-action.enum';
+import { LoginAction } from '../../common/enums/login-action.enum';
 
 @Entity('login_history')
 export class LoginHistory {
