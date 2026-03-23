@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-github2';
 import { ConfigService } from '@nestjs/config';
@@ -6,13 +6,18 @@ import { OAuthProfile } from './google.strategy';
 
 @Injectable()
 export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
+  private static readonly logger = new Logger(GithubStrategy.name);
+
   constructor(config: ConfigService) {
-    super({
-      clientID: config.get<string>('oauth2.github.clientId'),
-      clientSecret: config.get<string>('oauth2.github.clientSecret'),
-      callbackURL: config.get<string>('oauth2.github.callbackUrl'),
-      scope: ['user:email'],
-    });
+    const clientID = config.get<string>('oauth2.github.clientId') || 'DISABLED';
+    const clientSecret = config.get<string>('oauth2.github.clientSecret') || 'DISABLED';
+    const callbackURL = config.get<string>('oauth2.github.callbackUrl') || 'http://localhost:4000/api/v1/auth/oauth2/github/callback';
+
+    if (clientID === 'DISABLED') {
+      GithubStrategy.logger.warn('GitHub OAuth is disabled — GITHUB_CLIENT_ID not set');
+    }
+
+    super({ clientID, clientSecret, callbackURL, scope: ['user:email'] });
   }
 
   async validate(
